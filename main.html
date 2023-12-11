@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-			<meta charset="UTF-8" />
-			<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0">
-	
-			<title>Fruit Machine</title>	
-			<link rel="stylesheet" type="text/css" href="style.css">
-	
-			<script>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0">
+
+    <title>Fruit Machine</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script>
 
 				var y = [];
 				var u =[];
@@ -155,46 +155,48 @@
 							document.getElementById("sound1").style.visibility="hidden";
 				}	
 
-			</script>
+
+    </script>
 
 </head>
 
-				<body>
+<body>
 
-								<div id="loading">
-								  <img id="loading-image" src="img/BTN_Spin.png" alt="Loading..." />
-								</div>
+<div id="loading">
+    <img id="loading-image" src="img/BTN_Spin.png" alt="Loading..."/>
+</div>
 
-								<script>
+<script>
 											audio.play();
 											audio.currentTime = 0;
 											loadXMLDoc();	
-							 </script>
 
-				 			<img id="seleziona" src="img/selex.png" alt="Loading..." />
+</script>
+
+<img id="seleziona" src="img/selex.png" alt="Loading..."/>
 
 
-								<div id="groups">
-									 <img id="uno" src="img/SYM1.png" onclick="boasorte(0)" />
-									 <img id="due" src="img/SYM3.png" onclick="boasorte(1);" /><br>
-									 <img id="tre" src="img/SYM4.png" onclick="boasorte(2)" /> 
-									 <img id="quattro" src="img/SYM5.png" onclick="boasorte(3)" /><br>
-									 <img id="cinque" src="img/SYM6.png" onclick="boasorte(4)" />
-									 <img id="sei" src="img/SYM7.png" onclick="boasorte(5)" />
-								</div>
+<div id="groups">
+    <img id="uno" src="img/SYM1.png" onclick="boasorte(0)"/>
+    <img id="due" src="img/SYM3.png" onclick="boasorte(1);"/><br>
+    <img id="tre" src="img/SYM4.png" onclick="boasorte(2)"/>
+    <img id="quattro" src="img/SYM5.png" onclick="boasorte(3)"/><br>
+    <img id="cinque" src="img/SYM6.png" onclick="boasorte(4)"/>
+    <img id="sei" src="img/SYM7.png" onclick="boasorte(5)"/>
+</div>
 
-					  	<img id="begin" src="img/SYM1.png" />
-								<img id="win" src="img/win.png" onclick="window.location.reload()" />
-								<img id="lose" src="img/lose.png" onclick="window.location.reload()" />
-					  	<div id="selectiontext" > </div>  
-								<img id="push" src="img/push.png" onclick="change()" />
-				    <img id="stop" src="img/stop.png"  onclick="stoppe()" />
-								<img id="sound" src="img/soff.png" onclick="musica()" />
-								<img id="sound1" src="img/son.png" onclick="musica1()" />
-								<img id="stoppete" src="img/pushtostop.png" />
+<img id="begin" src="img/SYM1.png"/>
+<img id="win" src="img/win.png" onclick="window.location.reload()"/>
+<img id="lose" src="img/lose.png" onclick="window.location.reload()"/>
+<div id="selectiontext"></div>
+<img id="push" src="img/push.png" onclick="change()"/>
+<img id="stop" src="img/stop.png" onclick="stoppe()"/>
+<img id="sound" src="img/soff.png" onclick="musica()"/>
+<img id="sound1" src="img/son.png" onclick="musica1()"/>
+<img id="stoppete" src="img/pushtostop.png"/>
 
-				    <div id="result"></div>
+<div id="result"></div>
 
-				</body>
-				
+</body>
+
 </html>
