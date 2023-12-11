@@ -1,0 +1,40 @@
+<images>
+
+	<fruit>
+		<id>1</id>
+		<name>wild</name>
+		<path>img/SYM1.png</path>
+	</fruit>
+
+	<fruit>
+		<id>2</id>
+		<name>strawberry</name>
+		<path>img/SYM3.png</path>
+	</fruit>
+
+	<fruit>
+		<id>3</id>
+		<name>ananas</name>
+		<path>img/SYM4.png</path>
+	</fruit>
+
+	<fruit>
+		<id>4</id>
+		<name>lemon</name>
+		<path>img/SYM5.png</path>
+	</fruit>
+
+	<fruit>
+		<id>5</id>
+		<name>boh</name>
+		<path>img/SYM6.png</path>
+	</fruit>
+
+	<fruit>
+		<id>6</id>
+		<name>grapes</name>
+		<path>img/SYM7.png</path>
+	</fruit>
+
+
+</images>

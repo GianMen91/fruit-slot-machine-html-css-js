@@ -1,0 +1,195 @@
+
+body{
+	width:100%; height:100%; 
+	background:#000000 url("img/BG2.png") center center no-repeat;
+    background-attachment: fixed;
+    background-size:100% auto;
+}
+   
+#loading-image {
+	position: absolute;
+    visibility: hidden;
+    max-width: 9%;
+    width: 9%;
+    height: auto;
+    top: 47%;
+    left: 41%;
+    animation: spin 3s;
+    animation-duration: 2s;
+} 
+
+#begin{
+    position: fixed;
+    max-width: 13%;
+    width: 13%;
+    height: auto;
+    top: 47%;
+    left: 39%;
+    animation: opaco 5s;
+} 
+
+#win{
+    position: fixed;
+    max-width: 35%;
+    width: 35%;
+    height: auto;
+    top: 28%;
+    left: 27%;
+    visibility: hidden;
+} 
+
+#lose{
+    position: fixed;
+    max-width: 35%;
+    width: 35%;
+    height: auto;
+    top: 28%;
+    left: 27%;
+    visibility: hidden;
+} 
+
+
+#groups{
+    position: fixed;
+    width: 60%;
+    height: 100%;
+    top: 42%;
+    left: 62%;
+    animation: opaco 5s;
+}
+
+#seleziona{
+    position: fixed;
+    width: 20%;
+    max-width: 71%;
+    height: auto;
+    top: 23%;
+    left: 59%;
+    animation: opaco 5s;
+}
+
+#selectiontext{
+    color: white;
+    top: 72%;
+    position: absolute;
+    left: 63%;
+    width: 12%;
+}
+
+
+#select {
+    color: bisque;
+    top: 43%;
+    position: absolute;
+    left: 20%;
+}
+
+
+#push {
+        position: absolute;
+    visibility: hidden;
+    max-width: 12%;
+    width: 100%;
+    height: auto;
+    top: 40%;
+    left: 85%;
+}
+
+#stop {
+    position: absolute;
+    visibility: hidden;
+    max-width: 12%;
+    width: 100%;
+    height: auto;
+    top: 40%;
+    left: 12%;
+}
+
+#sound{
+    visibility: visible;
+    position: absolute;
+    width: 6%;
+    top: 80%;
+    left: 3%;
+}
+
+#sound1{
+    visibility: hidden;
+    position: absolute;
+    width: 6%;
+    top: 80%;
+    left: 3%;
+
+}
+
+#stoppete{
+    visibility: hidden;
+    position: absolute;
+    width: 13%;
+    max-width: 13%;
+    height: auto;
+    top: 62%;
+    left: 12%;
+}
+
+#result {
+    position: absolute;
+    top: 80%;
+    left: 37%;
+    color: white;
+    width: 18%;
+}
+
+#uno{
+    max-width: 13%;
+    width: 13%;
+    height: auto;
+}
+
+#due{
+    max-width: 13%;
+    width: 13%;
+    height: auto;
+}
+
+#tre{
+    max-width: 13%;
+    width: 13%;
+    height: auto;
+}
+
+#quattro{
+    max-width: 13%;
+    width: 13%;
+    height: auto;
+}
+
+#cinque{
+    max-width: 13%;
+    width: 13%;
+    height: auto;
+}
+
+#sei{
+max-width: 13%;
+    width: 13%;
+    height: auto;
+}
+
+
+@keyframes spin {
+    100% { 
+        visibility: visible;
+
+    	transform: rotate(360deg); 
+    	transform-origin: center;
+        opacity:0;
+    }
+}
+
+@keyframes opaco {
+     0% { 
+        opacity:0;
+    }
+}
+

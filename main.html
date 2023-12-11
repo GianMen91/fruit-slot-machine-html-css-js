@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+			<meta charset="UTF-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0">
+	
+			<title>Fruit Machine</title>	
+			<link rel="stylesheet" type="text/css" href="style.css">
+	
+			<script>
+
+				var y = [];
+				var u =[];
+				var x;
+				var z=0;
+				let timerId;
+				var num;
+				var audio = new Audio('sound/background.mp3');
+				var win = new Audio('sound/win.mp3');
+				var lose = new Audio('sound/lose.mp3');
+			
+		  function loadXMLDoc() 
+		  {
+			    var xmlhttp = new XMLHttpRequest();
+			    xmlhttp.onreadystatechange = function() {
+			      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			        myFunction(xmlhttp);
+			      }
+			    };
+			    xmlhttp.open("GET", "fruits.xml", true);
+			    xmlhttp.send();
+		  }
+
+
+			 function myFunction(xml)
+			 {
+		    	var xmlDoc = xml.responseXML;
+		     x = xmlDoc.getElementsByTagName("fruit");
+		     
+					  for (i = 0; i <x.length; i++) { 
+									y[i] = x[i].getElementsByTagName("path")[0].childNodes[0].nodeValue;
+									u[i] = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+							}
+			
+				}
+
+
+				function change()
+				{
+							var button = document.getElementById("push");
+				   button.style.visibility = "hidden" ;
+			    var button2 = document.getElementById("stop");
+			    button2.style.visibility = "visible" ;
+			    document.getElementById("stoppete").style.visibility = "visible";
+							changeImage();
+				}
+
+				function changeImage()
+				{
+					
+				    var img = document.getElementById("begin");
+				    img.src = y[z];
+				    z++;
+				    if(z >= y.length){
+				        z = 0;
+				    } 
+				    fadeImg(img, 100, true);
+				    timerId = setTimeout("changeImage()", 300);
+				}
+
+
+				function fadeImg(el, val, fade)
+				{
+				    if(fade === true){
+				        val--;
+				    }else{
+				        val ++;
+				    }
+
+				    if(val > 0 && val < 100){
+				        el.style.opacity = val / 100;
+				        setTimeout(function(){fadeImg(el, val, fade);}, 10);
+				    }
+				}
+
+				function spegni_sfondo()
+				{
+							document.getElementById("seleziona").style.visibility = "hidden" ;
+							document.getElementById("groups").style.visibility = "hidden" ;
+							document.getElementById("selectiontext").style.visibility = "hidden" ;
+							document.getElementById("stop").style.visibility = "hidden" ;
+				}
+
+				function stoppe()
+				{
+			   	var m=Math.floor((Math.random() * 6) + 0);
+			   	var text2;
+			   	var risultato;
+						 clearTimeout(timerId, 10);
+						 var imm = document.getElementById("begin");
+							
+							imm.src = y[m];
+						 text2="<h3>The Lady Luck gave you: "+ u[m]+"</h3>";
+				   audio.pause();
+
+		    	if(num==m)
+		    	{
+		    		risultato= document.getElementById("win");
+		    		win.play();
+		    	}
+		    	else
+		    	{
+		    		risultato = document.getElementById("lose");
+		    		lose.play();
+		    	}
+
+							spegni_sfondo();
+				   risultato.style.visibility = "visible" ;
+							document.getElementById("result").innerHTML =text2;
+					}
+
+				 function boasorte(n)
+				 {
+							 	var text;
+							 	var button = document.getElementById("push");
+								 document.getElementById("result").innerHTML = "";
+								 num=n;
+
+								 if(num==0)
+													text = "You selected WILD";
+								 else if(num==1)
+													text = "You selected STRAWBERRY";
+							 	else if(num==2)
+													text = "You selected PINEAPPLE";
+							 	else if(num==3)
+													text= "You selected LEMON";
+								 else if(num==4)
+													text = "You selected BOH";
+							 	else 
+													text= "You selected GRAPES";
+								
+								document.getElementById("selectiontext").innerHTML = "<h3>"+text+"</h3><h3>Push the RED BUTTON to take our chances</h3>";
+								button.style.visibility = "visible" ;
+					}
+
+				function musica(){		
+								audio.pause();
+								document.getElementById("sound").style.visibility="hidden";
+								document.getElementById("sound1").style.visibility="visible";
+					}
+				
+				function musica1(){		
+							audio.play();
+							document.getElementById("sound").style.visibility="visible";
+							document.getElementById("sound1").style.visibility="hidden";
+				}	
+
+			</script>
+
+</head>
+
+				<body>
+
+								<div id="loading">
+								  <img id="loading-image" src="img/BTN_Spin.png" alt="Loading..." />
+								</div>
+
+								<script>
+											audio.play();
+											audio.currentTime = 0;
+											loadXMLDoc();	
+							 </script>
+
+				 			<img id="seleziona" src="img/selex.png" alt="Loading..." />
+
+
+								<div id="groups">
+									 <img id="uno" src="img/SYM1.png" onclick="boasorte(0)" />
+									 <img id="due" src="img/SYM3.png" onclick="boasorte(1);" /><br>
+									 <img id="tre" src="img/SYM4.png" onclick="boasorte(2)" /> 
+									 <img id="quattro" src="img/SYM5.png" onclick="boasorte(3)" /><br>
+									 <img id="cinque" src="img/SYM6.png" onclick="boasorte(4)" />
+									 <img id="sei" src="img/SYM7.png" onclick="boasorte(5)" />
+								</div>
+
+					  	<img id="begin" src="img/SYM1.png" />
+								<img id="win" src="img/win.png" onclick="window.location.reload()" />
+								<img id="lose" src="img/lose.png" onclick="window.location.reload()" />
+					  	<div id="selectiontext" > </div>  
+								<img id="push" src="img/push.png" onclick="change()" />
+				    <img id="stop" src="img/stop.png"  onclick="stoppe()" />
+								<img id="sound" src="img/soff.png" onclick="musica()" />
+								<img id="sound1" src="img/son.png" onclick="musica1()" />
+								<img id="stoppete" src="img/pushtostop.png" />
+
+				    <div id="result"></div>
+
+				</body>
+				
+</html>
