@@ -26,9 +26,6 @@ function populateFruitData(data) {
 }
 
 function startGame() {
-    document.getElementById("startButton").style.visibility = "hidden";
-    document.getElementById("stopButton").style.visibility = "visible";
-    document.getElementById("stopPrompt").style.visibility = "visible";
     rotateFruitImages();
 }
 
@@ -73,11 +70,11 @@ function stopGame() {
 
 function selectFruit(fruitName) {
     document.getElementById("gameResult").innerHTML = "";
-    const startButton = document.getElementById("startButton");
     selectedFruit = fruitName;
 
     document.getElementById("selectionPrompt").innerHTML = `<h3>You selected ${fruitName}</h3><h3>Press the START button to test your luck!</h3>`;
-    startButton.style.visibility = "visible";
+    document.getElementById("startButtonEnabled").style.visibility = "visible";
+    document.getElementById("startButtonDisabled").style.visibility = "hidden";
 }
 
 function toggleBackgroundMusic() {
