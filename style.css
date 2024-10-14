@@ -57,7 +57,7 @@ body{
     animation: opaco 5s;
 }
 
-#select{
+#seleziona{
     position: fixed;
     width: 20%;
     max-width: 71%;
@@ -67,7 +67,7 @@ body{
     animation: opaco 5s;
 }
 
-#select-text{
+#selectiontext{
     color: white;
     top: 72%;
     position: absolute;
@@ -121,7 +121,7 @@ body{
 
 }
 
-#stop-button{
+#stoppete{
     visibility: hidden;
     position: absolute;
     width: 13%;
@@ -139,37 +139,37 @@ body{
     width: 18%;
 }
 
-#one{
+#uno{
     max-width: 13%;
     width: 13%;
     height: auto;
 }
 
-#two{
+#due{
     max-width: 13%;
     width: 13%;
     height: auto;
 }
 
-#three{
+#tre{
     max-width: 13%;
     width: 13%;
     height: auto;
 }
 
-#four{
+#quattro{
     max-width: 13%;
     width: 13%;
     height: auto;
 }
 
-#five{
+#cinque{
     max-width: 13%;
     width: 13%;
     height: auto;
 }
 
-#six{
+#sei{
 max-width: 13%;
     width: 13%;
     height: auto;
