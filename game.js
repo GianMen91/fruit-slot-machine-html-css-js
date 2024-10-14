@@ -1,113 +1,112 @@
-const fruitPaths = [];
+const fruitImagePaths = [];
 const fruitNames = [];
 let currentFruitIndex = 0;
-let timerId;
+let imageRotationTimer;
 let selectedFruitIndex;
-const audio = new Audio('sound/background.mp3');
-const winSound = new Audio('sound/win.mp3');
-const loseSound = new Audio('sound/lose.mp3');
+const backgroundMusic = new Audio('sound/background.mp3');
+const winAudio = new Audio('sound/win.mp3');
+const loseAudio = new Audio('sound/lose.mp3');
 
-function loadJSONDoc() {
-    const xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            parseJSON(JSON.parse(xmlhttp.responseText));
+function loadFruitData() {
+    const request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            populateFruitData(JSON.parse(request.responseText));
         }
     };
-    xmlhttp.open("GET", "symbols.json", true);
-    xmlhttp.send();
+    request.open("GET", "symbols.json", true);
+    request.send();
 }
 
-function parseJSON(jsonDoc) {
-    const fruits = jsonDoc.symbols; // Accessing the symbols array
+function populateFruitData(data) {
+    const fruits = data.symbols;
     for (let i = 0; i < fruits.length; i++) {
-        fruitPaths[i] = fruits[i].src; // Get image source
-        fruitNames[i] = fruits[i].name; // Get fruit name
+        fruitImagePaths[i] = fruits[i].src;
+        fruitNames[i] = fruits[i].name;
     }
 }
 
-function change() {
-    document.getElementById("push").style.visibility = "hidden";
-    const stopButton = document.getElementById("stop");
-    stopButton.style.visibility = "visible";
-    document.getElementById("stoppete").style.visibility = "visible";
-    changeImage();
+function startGame() {
+    document.getElementById("startButton").style.visibility = "hidden";
+    document.getElementById("stopButton").style.visibility = "visible";
+    document.getElementById("stopPrompt").style.visibility = "visible";
+    rotateFruitImages();
 }
 
-function changeImage() {
-    const img = document.getElementById("begin");
-    img.src = fruitPaths[currentFruitIndex];
-    currentFruitIndex = (currentFruitIndex + 1) % fruitPaths.length;
-    fadeImg(img, 100, true);
-    timerId = setTimeout(changeImage, 300);
+function rotateFruitImages() {
+    const imageElement = document.getElementById("fruitDisplay");
+    imageElement.src = fruitImagePaths[currentFruitIndex];
+    currentFruitIndex = (currentFruitIndex + 1) % fruitImagePaths.length;
+    fadeImage(imageElement, 100, true);
+    imageRotationTimer = setTimeout(rotateFruitImages, 300);
 }
 
-function fadeImg(el, val, fading) {
-    val += fading ? -1 : 1;
-    if (val > 0 && val < 100) {
-        el.style.opacity = val / 100;
-        setTimeout(() => fadeImg(el, val, fading), 10);
+function fadeImage(element, opacityValue, fading) {
+    opacityValue += fading ? -1 : 1;
+    if (opacityValue > 0 && opacityValue < 100) {
+        element.style.opacity = opacityValue / 100;
+        setTimeout(() => fadeImage(element, opacityValue, fading), 10);
     }
 }
 
-function hideElements() {
-    document.getElementById("seleziona").style.visibility = "hidden";
-    document.getElementById("groups").style.visibility = "hidden";
-    document.getElementById("selectiontext").style.visibility = "hidden";
-    document.getElementById("stop").style.visibility = "hidden";
+function hideGameElements() {
+    document.getElementById("fruitSelection").style.visibility = "hidden";
+    document.getElementById("fruitOptions").style.visibility = "hidden";
+    document.getElementById("selectionPrompt").style.visibility = "hidden";
+    document.getElementById("stopButton").style.visibility = "hidden";
 }
 
 function stopGame() {
-    clearTimeout(timerId);
-    const randomIndex = Math.floor(Math.random() * fruitPaths.length);
-    const img = document.getElementById("begin");
-    img.src = fruitPaths[randomIndex];
-    const resultText = `<h3>The Lady Luck gave you: ${fruitNames[randomIndex]}</h3>`;
-    audio.pause();
+    clearTimeout(imageRotationTimer);
+    const randomFruitIndex = Math.floor(Math.random() * fruitImagePaths.length);
+    const imageElement = document.getElementById("fruitDisplay");
+    imageElement.src = fruitImagePaths[randomFruitIndex];
+    const resultMessage = `<h3>You got: ${fruitNames[randomFruitIndex]}</h3>`;
+    backgroundMusic.pause();
 
-    const resultElement = (selectedFruitIndex === randomIndex) ? document.getElementById("win") : document.getElementById("lose");
-    (selectedFruitIndex === randomIndex ? winSound : loseSound).play();
+    const resultElement = (selectedFruitIndex === randomFruitIndex) ? document.getElementById("winDisplay") : document.getElementById("loseDisplay");
+    (selectedFruitIndex === randomFruitIndex ? winAudio : loseAudio).play();
 
-    hideElements();
+    hideGameElements();
     resultElement.style.visibility = "visible";
-    document.getElementById("result").innerHTML = resultText;
+    document.getElementById("gameResult").innerHTML = resultMessage;
 }
 
-function selectFruit(n) {
-    selectedFruitIndex = n;
-    document.getElementById("result").innerHTML = "";
-    const button = document.getElementById("push");
-    let text;
+function selectFruit(fruitIndex) {
+    selectedFruitIndex = fruitIndex;
+    document.getElementById("gameResult").innerHTML = "";
+    const startButton = document.getElementById("startButton");
+    let selectedFruitMessage;
 
-    switch (n) {
-        case 0: text = "You selected WILD"; break;
-        case 1: text = "You selected STRAWBERRY"; break;
-        case 2: text = "You selected PINEAPPLE"; break;
-        case 3: text = "You selected LEMON"; break;
-        case 4: text = "You selected MELON"; break;
-        default: text = "You selected GRAPES"; break;
+    switch (fruitIndex) {
+        case 0: selectedFruitMessage = "You selected WILD"; break;
+        case 1: selectedFruitMessage = "You selected STRAWBERRY"; break;
+        case 2: selectedFruitMessage = "You selected PINEAPPLE"; break;
+        case 3: selectedFruitMessage = "You selected LEMON"; break;
+        case 4: selectedFruitMessage = "You selected MELON"; break;
+        default: selectedFruitMessage = "You selected GRAPES"; break;
     }
 
-    document.getElementById("selectiontext").innerHTML = `<h3>${text}</h3><h3>Push the RED BUTTON to take our chances</h3>`;
-    button.style.visibility = "visible";
+    document.getElementById("selectionPrompt").innerHTML = `<h3>${selectedFruitMessage}</h3><h3>Press the START button to try your luck!</h3>`;
+    startButton.style.visibility = "visible";
 }
 
-function toggleMusic() {
-    if (audio.paused) {
-        audio.play();
-        document.getElementById("sound").style.visibility = "visible";
-        document.getElementById("sound1").style.visibility = "hidden";
+function toggleBackgroundMusic() {
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        document.getElementById("muteButton").style.visibility = "visible";
+        document.getElementById("playButton").style.visibility = "hidden";
     } else {
-        audio.pause();
-        document.getElementById("sound").style.visibility = "hidden";
-        document.getElementById("sound1").style.visibility = "visible";
+        backgroundMusic.pause();
+        document.getElementById("muteButton").style.visibility = "hidden";
+        document.getElementById("playButton").style.visibility = "visible";
     }
 }
 
-document.getElementById("sound").onclick = function() {
-    audio.play();
+document.getElementById("muteButton").onclick = function() {
+    backgroundMusic.play();
 };
 
 // Initial setup
-audio.currentTime = 0;
-loadJSONDoc(); // Call the function to load JSON
+backgroundMusic.currentTime = 0;
+loadFruitData();

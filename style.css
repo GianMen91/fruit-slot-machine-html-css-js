@@ -1,33 +1,33 @@
-body{
-	width:100%; height:100%; 
-	background:#000000 url("img/BG2.png") center center no-repeat;
+body {
+    width: 100%;
+    height: 100%;
+    background: #000000 url("img/BG2.png") center center no-repeat;
     background-attachment: fixed;
-    background-size:100% auto;
+    background-size: 100% auto;
 }
-   
-#loading-image {
-	position: absolute;
+
+#loadingImage {
+    position: absolute;
     visibility: hidden;
     max-width: 9%;
     width: 9%;
     height: auto;
     top: 47%;
     left: 41%;
-    animation: spin 3s;
-    animation-duration: 2s;
-} 
+    animation: spin 2s;
+}
 
-#begin{
+#fruitDisplay {
     position: fixed;
     max-width: 13%;
     width: 13%;
     height: auto;
     top: 47%;
     left: 39%;
-    animation: opaco 5s;
-} 
+    animation: fadeIn 5s;
+}
 
-#win{
+#winDisplay {
     position: fixed;
     max-width: 35%;
     width: 35%;
@@ -35,9 +35,9 @@ body{
     top: 28%;
     left: 27%;
     visibility: hidden;
-} 
+}
 
-#lose{
+#loseDisplay {
     position: fixed;
     max-width: 35%;
     width: 35%;
@@ -45,29 +45,28 @@ body{
     top: 28%;
     left: 27%;
     visibility: hidden;
-} 
+}
 
-
-#groups{
+#fruitOptions {
     position: fixed;
     width: 60%;
     height: 100%;
     top: 42%;
     left: 62%;
-    animation: opaco 5s;
+    animation: fadeIn 5s;
 }
 
-#seleziona{
+#fruitSelection {
     position: fixed;
     width: 20%;
     max-width: 71%;
     height: auto;
     top: 23%;
     left: 59%;
-    animation: opaco 5s;
+    animation: fadeIn 5s;
 }
 
-#selectiontext{
+#selectionPrompt {
     color: white;
     top: 72%;
     position: absolute;
@@ -75,17 +74,8 @@ body{
     width: 12%;
 }
 
-
-#select {
-    color: bisque;
-    top: 43%;
+#startButton {
     position: absolute;
-    left: 20%;
-}
-
-
-#push {
-        position: absolute;
     visibility: hidden;
     max-width: 12%;
     width: 100%;
@@ -94,7 +84,7 @@ body{
     left: 85%;
 }
 
-#stop {
+#stopButton {
     position: absolute;
     visibility: hidden;
     max-width: 12%;
@@ -104,7 +94,7 @@ body{
     left: 12%;
 }
 
-#sound{
+#muteButton{
     visibility: visible;
     position: absolute;
     width: 6%;
@@ -112,7 +102,7 @@ body{
     left: 3%;
 }
 
-#sound1{
+#playButton{
     visibility: hidden;
     position: absolute;
     width: 6%;
@@ -121,7 +111,20 @@ body{
 
 }
 
-#stoppete{
+#gameResult {
+    color: white;
+    top: 72%;
+    position: absolute;
+    left: 65%;
+}
+
+.fruitImage{
+    max-width: 13%;
+    width: 13%;
+    height: auto;
+}
+
+#stopPrompt{
     visibility: hidden;
     position: absolute;
     width: 13%;
@@ -131,65 +134,13 @@ body{
     left: 12%;
 }
 
-#result {
-    position: absolute;
-    top: 80%;
-    left: 37%;
-    color: white;
-    width: 18%;
-}
-
-
-#one{
-    max-width: 13%;
-    width: 13%;
-    height: auto;
-}
-
-#two{
-    max-width: 13%;
-    width: 13%;
-    height: auto;
-}
-
-#three{
-    max-width: 13%;
-    width: 13%;
-    height: auto;
-}
-
-#four{
-    max-width: 13%;
-    width: 13%;
-    height: auto;
-}
-
-#five{
-    max-width: 13%;
-    width: 13%;
-    height: auto;
-}
-
-#six{
-max-width: 13%;
-    width: 13%;
-    height: auto;
-}
-
 
 @keyframes spin {
-    100% { 
-        visibility: visible;
-
-    	transform: rotate(360deg); 
-    	transform-origin: center;
-        opacity:0;
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-@keyframes opaco {
-     0% { 
-        opacity:0;
-    }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
-

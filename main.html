@@ -7,35 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="loadingScreen">
+        <img id="loadingImage" src="img/BTN_Spin.png" alt="Loading..."/>
+    </div>
 
-<div id="loading">
-    <img id="loading-image" src="img/BTN_Spin.png" alt="Loading..."/>
-</div>
+    <img id="fruitSelection" src="img/selex.png" alt="Fruit Selection"/>
 
-<img id="seleziona" src="img/selex.png" alt="Selection"/>
+    <div id="fruitOptions">
+        <img class="fruitImage" src="img/SYM1.png" alt="WILD" onclick="selectFruit(0)"/>
+        <img class="fruitImage" src="img/SYM2.png" alt="STRAWBERRY" onclick="selectFruit(1)"/><br>
+        <img class="fruitImage" src="img/SYM3.png" alt="PINEAPPLE" onclick="selectFruit(2)"/>
+        <img class="fruitImage" src="img/SYM4.png" alt="LEMON" onclick="selectFruit(3)"/><br>
+        <img class="fruitImage" src="img/SYM5.png" alt="MELON" onclick="selectFruit(4)"/>
+        <img class="fruitImage" src="img/SYM6.png" alt="GRAPES" onclick="selectFruit(5)"/>
+    </div>
 
-<div id="groups">
-    <img id="one" src="img/SYM1.png" alt="Symbol 1" onclick="selectFruit(0)"/>
-    <img id="two" src="img/SYM2.png" alt="Symbol 2" onclick="selectFruit(1)"/><br>
-    <img id="three" src="img/SYM3.png" alt="Symbol 3" onclick="selectFruit(2)"/>
-    <img id="four" src="img/SYM4.png" alt="Symbol 4" onclick="selectFruit(3)"/><br>
-    <img id="five" src="img/SYM5.png" alt="Symbol 5" onclick="selectFruit(4)"/>
-    <img id="six" src="img/SYM6.png" alt="Symbol 6" onclick="selectFruit(5)"/>
-</div>
+    <img id="fruitDisplay" src="img/SYM1.png" alt="Current Fruit"/>
+    <img id="winDisplay" src="img/win.png" alt="You Win!" onclick="window.location.reload()"/>
+    <img id="loseDisplay" src="img/lose.png" alt="You Lose!" onclick="window.location.reload()"/>
 
-<img id="begin" src="img/SYM1.png" alt="Current Symbol"/>
-<img id="win" src="img/win.png" alt="Win" onclick="window.location.reload()"/>
-<img id="lose" src="img/lose.png" alt="Lose" onclick="window.location.reload()"/>
+    <div id="selectionPrompt"></div>
+    <img id="startButton" src="img/push.png" alt="Start" onclick="startGame()"/>
+    <img id="stopButton" src="img/stop.png" alt="Stop" onclick="stopGame()"/>
+    <img id="muteButton" src="img/soff.png" alt="Mute Sound" onclick="toggleBackgroundMusic()"/>
+    <img id="playButton" src="img/son.png" alt="Play Sound" onclick="toggleBackgroundMusic()"/>
+    <img id="stopPrompt" src="img/pushtostop.png" alt="Press to Stop"/>
 
-<div id="selectiontext"></div>
-<img id="push" src="img/push.png" alt="Push Button" onclick="change()"/>
-<img id="stop" src="img/stop.png" alt="Stop Button" onclick="stopGame()"/>
-<img id="sound" src="img/soff.png" alt="Mute Sound" onclick="toggleMusic()"/>
-<img id="sound1" src="img/son.png" alt="Play Sound" onclick="toggleMusic()"/>
-<img id="stoppete" src="img/pushtostop.png" alt="Push to Stop"/>
+    <div id="gameResult"></div>
 
-<div id="result"></div>
-
-<script src="game.js"></script>
-</body>
+    <script src="game.js"></script>
+    </body>
 </html>
