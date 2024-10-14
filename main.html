@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0">
-    <title>Fruit Machine</title>
+    <title>Fruit Slot Machine</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,12 +14,12 @@
     <img id="fruitSelection" src="img/selex.png" alt="Fruit Selection"/>
 
     <div id="fruitOptions">
-        <img class="fruitImage" src="img/SYM1.png" alt="WILD" onclick="selectFruit(0)"/>
-        <img class="fruitImage" src="img/SYM2.png" alt="STRAWBERRY" onclick="selectFruit(1)"/><br>
-        <img class="fruitImage" src="img/SYM3.png" alt="PINEAPPLE" onclick="selectFruit(2)"/>
-        <img class="fruitImage" src="img/SYM4.png" alt="LEMON" onclick="selectFruit(3)"/><br>
-        <img class="fruitImage" src="img/SYM5.png" alt="MELON" onclick="selectFruit(4)"/>
-        <img class="fruitImage" src="img/SYM6.png" alt="GRAPES" onclick="selectFruit(5)"/>
+        <img class="fruitImage" src="img/SYM1.png" alt="WILD" onclick="selectFruit('WILD')"/>
+        <img class="fruitImage" src="img/SYM2.png" alt="GRAPES" onclick="selectFruit('GRAPES')"/><br>
+        <img class="fruitImage" src="img/SYM3.png" alt="STRAWBERRY" onclick="selectFruit('STRAWBERRY')"/>
+        <img class="fruitImage" src="img/SYM3.png" alt="PINEAPPLE" onclick="selectFruit('PINEAPPLE')"/><br>
+        <img class="fruitImage" src="img/SYM4.png" alt="LEMON" onclick="selectFruit('LEMON')"/>
+        <img class="fruitImage" src="img/SYM5.png" alt="MELON" onclick="selectFruit('MELON')"/>
     </div>
 
     <img id="fruitDisplay" src="img/SYM1.png" alt="Current Fruit"/>

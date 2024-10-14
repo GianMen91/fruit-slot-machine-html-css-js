@@ -72,22 +72,13 @@ function stopGame() {
     document.getElementById("gameResult").innerHTML = resultMessage;
 }
 
-function selectFruit(fruitIndex) {
-    selectedFruitIndex = fruitIndex;
+function selectFruit(fruitName) {
     document.getElementById("gameResult").innerHTML = "";
     const startButton = document.getElementById("startButton");
     let selectedFruitMessage;
 
-    switch (fruitIndex) {
-        case 0: selectedFruitMessage = "You selected WILD"; break;
-        case 1: selectedFruitMessage = "You selected STRAWBERRY"; break;
-        case 2: selectedFruitMessage = "You selected PINEAPPLE"; break;
-        case 3: selectedFruitMessage = "You selected LEMON"; break;
-        case 4: selectedFruitMessage = "You selected MELON"; break;
-        default: selectedFruitMessage = "You selected GRAPES"; break;
-    }
-
-    document.getElementById("selectionPrompt").innerHTML = `<h3>${selectedFruitMessage}</h3><h3>Press the START button to try your luck!</h3>`;
+    selectedFruitMessage = "You selected "+fruitName;
+    document.getElementById("selectionPrompt").innerHTML = `<h3>${selectedFruitMessage}</h3><h3>Press the START button to test your luck!</h3>`;
     startButton.style.visibility = "visible";
 }
 
