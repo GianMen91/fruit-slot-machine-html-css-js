@@ -29,6 +29,22 @@ function startGame() {
     rotateFruitImages();
 }
 
+function stopGame() {
+    clearTimeout(imageRotationTimer);
+    const randomIndex = Math.floor(Math.random() * fruitNames.length);
+    const imageElement = document.getElementById("fruitDisplay");
+    imageElement.src = fruitImagePaths[randomIndex];
+    const resultMessage = `<h3>You got: ${fruitNames[randomIndex]}</h3>`;
+    backgroundMusic.pause();
+
+    const resultElement = (selectedFruit === fruitNames[randomIndex]) ? document.getElementById("winDisplay") : document.getElementById("loseDisplay");
+    (selectedFruit === fruitNames[randomIndex] ? winAudio : loseAudio).play();
+
+    hideGameElements();
+    resultElement.style.visibility = "visible";
+    document.getElementById("gameResult").innerHTML = resultMessage;
+}
+
 function rotateFruitImages() {
     const imageElement = document.getElementById("fruitDisplay");
     const randomIndex = Math.floor(Math.random() * fruitImagePaths.length);
@@ -49,23 +65,6 @@ function hideGameElements() {
     document.getElementById("fruitSelection").style.visibility = "hidden";
     document.getElementById("fruitOptions").style.visibility = "hidden";
     document.getElementById("selectionPrompt").style.visibility = "hidden";
-    document.getElementById("stopButton").style.visibility = "hidden";
-}
-
-function stopGame() {
-    clearTimeout(imageRotationTimer);
-    const randomIndex = Math.floor(Math.random() * fruitNames.length);
-    const imageElement = document.getElementById("fruitDisplay");
-    imageElement.src = fruitImagePaths[randomIndex];
-    const resultMessage = `<h3>You got: ${fruitNames[randomIndex]}</h3>`;
-    backgroundMusic.pause();
-
-    const resultElement = (selectedFruit === fruitNames[randomIndex]) ? document.getElementById("winDisplay") : document.getElementById("loseDisplay");
-    (selectedFruit === fruitNames[randomIndex] ? winAudio : loseAudio).play();
-
-    hideGameElements();
-    resultElement.style.visibility = "visible";
-    document.getElementById("gameResult").innerHTML = resultMessage;
 }
 
 function selectFruit(fruitName) {
