@@ -1,11 +1,10 @@
 const fruitImagePaths = [];
 const fruitNames = [];
-let currentFruitIndex = 0;
 let imageRotationTimer;
-let selectedFruitIndex;
 const backgroundMusic = new Audio('sound/background.mp3');
 const winAudio = new Audio('sound/win.mp3');
 const loseAudio = new Audio('sound/lose.mp3');
+let selectedFruit;
 
 function loadFruitData() {
     const request = new XMLHttpRequest();
@@ -35,8 +34,8 @@ function startGame() {
 
 function rotateFruitImages() {
     const imageElement = document.getElementById("fruitDisplay");
-    imageElement.src = fruitImagePaths[currentFruitIndex];
-    currentFruitIndex = (currentFruitIndex + 1) % fruitImagePaths.length;
+    const randomIndex = Math.floor(Math.random() * fruitImagePaths.length);
+    imageElement.src = fruitImagePaths[randomIndex];
     fadeImage(imageElement, 100, true);
     imageRotationTimer = setTimeout(rotateFruitImages, 300);
 }
@@ -58,14 +57,14 @@ function hideGameElements() {
 
 function stopGame() {
     clearTimeout(imageRotationTimer);
-    const randomFruitIndex = Math.floor(Math.random() * fruitImagePaths.length);
+    const randomIndex = Math.floor(Math.random() * fruitNames.length);
     const imageElement = document.getElementById("fruitDisplay");
-    imageElement.src = fruitImagePaths[randomFruitIndex];
-    const resultMessage = `<h3>You got: ${fruitNames[randomFruitIndex]}</h3>`;
+    imageElement.src = fruitImagePaths[randomIndex];
+    const resultMessage = `<h3>You got: ${fruitNames[randomIndex]}</h3>`;
     backgroundMusic.pause();
 
-    const resultElement = (selectedFruitIndex === randomFruitIndex) ? document.getElementById("winDisplay") : document.getElementById("loseDisplay");
-    (selectedFruitIndex === randomFruitIndex ? winAudio : loseAudio).play();
+    const resultElement = (selectedFruit === fruitNames[randomIndex]) ? document.getElementById("winDisplay") : document.getElementById("loseDisplay");
+    (selectedFruit === fruitNames[randomIndex] ? winAudio : loseAudio).play();
 
     hideGameElements();
     resultElement.style.visibility = "visible";
@@ -75,10 +74,9 @@ function stopGame() {
 function selectFruit(fruitName) {
     document.getElementById("gameResult").innerHTML = "";
     const startButton = document.getElementById("startButton");
-    let selectedFruitMessage;
+    selectedFruit = fruitName;
 
-    selectedFruitMessage = "You selected "+fruitName;
-    document.getElementById("selectionPrompt").innerHTML = `<h3>${selectedFruitMessage}</h3><h3>Press the START button to test your luck!</h3>`;
+    document.getElementById("selectionPrompt").innerHTML = `<h3>You selected ${fruitName}</h3><h3>Press the START button to test your luck!</h3>`;
     startButton.style.visibility = "visible";
 }
 
