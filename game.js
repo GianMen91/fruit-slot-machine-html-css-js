@@ -84,7 +84,7 @@ function selectFruit(n) {
         case 1: text = "You selected STRAWBERRY"; break;
         case 2: text = "You selected PINEAPPLE"; break;
         case 3: text = "You selected LEMON"; break;
-        case 4: text = "You selected BOH"; break;
+        case 4: text = "You selected MELON"; break;
         default: text = "You selected GRAPES"; break;
     }
 
