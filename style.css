@@ -24,7 +24,6 @@ body {
     height: auto;
     top: 47%;
     left: 10%;
-    animation: fadeIn 5s;
 }
 
 #secondFruitDisplayed {
@@ -34,7 +33,6 @@ body {
     height: auto;
     top: 47%;
     left: 38%;
-    animation: fadeIn 5s;
 }
 
 #thirdFruitDisplayed {
@@ -44,8 +42,32 @@ body {
     height: auto;
     top: 47%;
     left: 63%;
-    animation: fadeIn 5s;
 }
+
+@keyframes spinVertical {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+#firstFruitDisplayed, #secondFruitDisplayed, #thirdFruitDisplayed {
+    position: fixed;
+    max-width: 13%;
+    width: 13%;
+    height: auto;
+    top: 47%;
+    animation-duration: 0.5s; /* Duration of each spin */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.spin {
+    animation-name: spinVertical;
+}
+
 
 #winDisplay {
     position: fixed;
@@ -139,7 +161,7 @@ body {
     left: 65%;
 }
 
-.fruitImage{
+.fruitIcon{
     max-width: 13%;
     width: 13%;
     height: auto;
