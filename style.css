@@ -133,6 +133,16 @@ body {
     left: 12%;
 }
 
+/* Add this to your style.css */
+
+/* Style for the selected fruit (highlight) */
+.selectedFruit {
+    border: 3px solid #00D9FF; /* Add a blue border around the selected fruit */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 217, 255, 0.7); /* Add a glow effect */
+}
+
+
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }

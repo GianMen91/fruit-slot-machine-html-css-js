@@ -5,6 +5,7 @@ const backgroundMusic = new Audio('sound/background.mp3');
 const winAudio = new Audio('sound/win.mp3');
 const loseAudio = new Audio('sound/lose.mp3');
 let selectedFruit;
+let previouslySelectedElement = null;
 
 function loadFruitData() {
     const request = new XMLHttpRequest();
@@ -74,10 +75,21 @@ function selectFruit(fruitName) {
     document.getElementById("gameResult").innerHTML = "";
     selectedFruit = fruitName;
 
+    // Highlight the selected fruit by adding a class
+    const fruitImages = document.querySelectorAll(".fruitImage");
+    fruitImages.forEach(image => {
+        image.classList.remove("selectedFruit"); // Remove highlight from all fruits
+    });
+
+    // Find the clicked image and highlight it
+    const clickedFruit = Array.from(fruitImages).find(img => img.alt === fruitName);
+    clickedFruit.classList.add("selectedFruit");
+
     document.getElementById("selectionPrompt").innerHTML = `<h3>You selected ${fruitName}</h3><h3>Press the START button to test your luck!</h3>`;
     document.getElementById("startButtonEnabled").style.visibility = "visible";
     document.getElementById("startButtonDisabled").style.visibility = "hidden";
 }
+
 
 function toggleBackgroundMusic() {
     if (backgroundMusic.paused) {
