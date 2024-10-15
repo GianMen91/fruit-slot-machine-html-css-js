@@ -30,73 +30,76 @@ function startGame() {
     document.getElementById("startButtonEnabled").classList.add("rotating");
     rotateFruitImages();
     setTimeout(stopGame, 3000);
+    document.getElementById("fruitDisplay").style.opacity = 1;
 }
 
 function stopGame() {
-   document.getElementById("startButtonEnabled").classList.remove("rotating");
+    document.getElementById("startButtonEnabled").classList.remove("rotating");
     clearTimeout(imageRotationTimer);
     const randomIndex = Math.floor(Math.random() * fruitNames.length);
     const imageElement = document.getElementById("fruitDisplay");
     imageElement.src = fruitImagePaths[randomIndex];
-    const resultMessage = `<h3>You got: ${fruitNames[randomIndex].toUpperCase()}</h3>`;
     backgroundMusic.pause();
 
-    const resultElement = (selectedFruit === fruitNames[randomIndex].toUpperCase()) ? document.getElementById("winDisplay") : document.getElementById("loseDisplay");
-    (selectedFruit === fruitNames[randomIndex].toUpperCase() ? winAudio : loseAudio).play();
+    // Determine if the user won or lost
+    const isWin = selectedFruit === fruitNames[randomIndex].toUpperCase();
+    (isWin ? winAudio : loseAudio).play();
 
-    resultElement.style.visibility = "visible";
+    // Set the result text and button visibility
+    const resultText = document.getElementById("resultText");
+
+    if (isWin) {
+        resultText.innerHTML = "You Won!";
+    } else {
+        resultText.innerHTML = "You Lose!";
+    }
 
 
-    document.getElementById("startButtonDisabled").style.visibility = "visible";
+    // Make the result text visible
+    resultText.style.visibility = "visible";
     document.getElementById("startButtonEnabled").style.visibility = "hidden";
-
+        document.getElementById("startButtonDisabled").style.visibility = "visible";
 }
 
-function restartGame(elementId) {
-    // Reset the selected fruit
-    selectedFruit = null;
 
-    // Remove any visual highlight from the selected fruit
-    const fruitImages = document.querySelectorAll(".fruitImage");
-    fruitImages.forEach(image => {
-        image.classList.remove("selectedFruit");
-    });
-    document.getElementById("fruitDisplay").style.opacity = 1;
+function fadeImage(element, opacityValue, fading) {
+    // Adjust the opacity value based on whether it's fading in or out
+    if (fading) {
+        opacityValue -= 1;
+    } else {
+        opacityValue += 1;
+    }
 
-    // Hide the game result and any visible game elements
-    document.getElementById("gameResult").style.visibility = "hidden";
-    document.getElementById(elementId).style.visibility = "hidden";
+    // Clamp opacity values between 0 and 100
+    if (opacityValue <= 0) {
+        opacityValue = 0;
+        return; // Stop further fading if it's fully transparent
+    }
 
-    document.getElementById("fruitDisplay").style.visibility = "visible";
+    if (opacityValue >= 100) {
+        opacityValue = 100;
+        return; // Stop further fading if it's fully opaque
+    }
 
+    element.style.opacity = opacityValue / 100;
 
-    // Reset the start button visibility
-    document.getElementById("startButtonEnabled").style.visibility = "hidden";
-    document.getElementById("startButtonDisabled").style.visibility = "visible";
-
-    // Optionally, reset the selection prompt or any other elements
-    document.getElementById("selectionPrompt").innerHTML = "";
+    // Continue fading after a short delay
+    setTimeout(() => fadeImage(element, opacityValue, fading), 10);
 }
-
 
 function rotateFruitImages() {
     const imageElement = document.getElementById("fruitDisplay");
     const randomIndex = Math.floor(Math.random() * fruitImagePaths.length);
     imageElement.src = fruitImagePaths[randomIndex];
-    fadeImage(imageElement, 100, true);
+
+    // Don't fade the image completely out, just display it
+    fadeImage(imageElement, 100, false);  // Ensure it's fully visible
+
     imageRotationTimer = setTimeout(rotateFruitImages, 300);
 }
 
-function fadeImage(element, opacityValue, fading) {
-    opacityValue += fading ? -1 : 1;
-    if (opacityValue > 0 && opacityValue < 100) {
-        element.style.opacity = opacityValue / 100;
-        setTimeout(() => fadeImage(element, opacityValue, fading), 10);
-    }
-}
 
 function selectFruit(fruitName) {
-    document.getElementById("gameResult").innerHTML = "";
     selectedFruit = fruitName;
 
     // Highlight the selected fruit by adding a class
@@ -109,6 +112,7 @@ function selectFruit(fruitName) {
     const clickedFruit = Array.from(fruitImages).find(img => img.alt === fruitName);
     clickedFruit.classList.add("selectedFruit");
 
+    document.getElementById("resultText").style.visibility = "hidden";
     document.getElementById("startButtonEnabled").style.visibility = "visible";
     document.getElementById("startButtonDisabled").style.visibility = "hidden";
 }
