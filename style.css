@@ -110,8 +110,8 @@ body {
     color: white;
 }
 
-#playButton {
-    display: none; /* Initially hidden */
+#muteButton {
+    display: none;
 }
 
 

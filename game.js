@@ -1,11 +1,11 @@
 const fruitImagePaths = [];
 const fruitNames = [];
 let imageRotationTimer;
-const backgroundMusic = new Audio('sound/background.mp3');
 const winAudio = new Audio('sound/win.mp3');
 const loseAudio = new Audio('sound/lose.mp3');
 let selectedFruit;
 let previouslySelectedElement = null;
+let isMusicOn = true; // Track whether the music is on or off
 
 function loadFruitData() {
     const request = new XMLHttpRequest();
@@ -39,28 +39,26 @@ function stopGame() {
     const randomIndex = Math.floor(Math.random() * fruitNames.length);
     const imageElement = document.getElementById("fruitDisplay");
     imageElement.src = fruitImagePaths[randomIndex];
-    backgroundMusic.pause();
 
     // Determine if the user won or lost
     const isWin = selectedFruit === fruitNames[randomIndex].toUpperCase();
-    (isWin ? winAudio : loseAudio).play();
+
+    // Play audio only if the music is on
+    if (isMusicOn) {
+        (isWin ? winAudio : loseAudio).play().catch(error => {
+            console.error("Audio playback failed:", error);
+        });
+    }
 
     // Set the result text and button visibility
     const resultText = document.getElementById("resultText");
-
-    if (isWin) {
-        resultText.innerHTML = "You Won!";
-    } else {
-        resultText.innerHTML = "You Lose!";
-    }
-
-
-    // Make the result text visible
+    resultText.innerHTML = isWin ? "You Won!" : "You Lose!";
     resultText.style.visibility = "visible";
-    document.getElementById("startButtonEnabled").style.visibility = "hidden";
-        document.getElementById("startButtonDisabled").style.visibility = "visible";
-}
 
+    // Handle button visibility
+    document.getElementById("startButtonEnabled").style.visibility = "hidden";
+    document.getElementById("startButtonDisabled").style.visibility = "visible";
+}
 
 function fadeImage(element, opacityValue, fading) {
     // Adjust the opacity value based on whether it's fading in or out
@@ -98,7 +96,6 @@ function rotateFruitImages() {
     imageRotationTimer = setTimeout(rotateFruitImages, 300);
 }
 
-
 function selectFruit(fruitName) {
     selectedFruit = fruitName;
 
@@ -117,24 +114,18 @@ function selectFruit(fruitName) {
     document.getElementById("startButtonDisabled").style.visibility = "hidden";
 }
 
-
 function toggleBackgroundMusic() {
-    if (backgroundMusic.paused) {
-        backgroundMusic.play();
-        document.getElementById("muteButton").style.display = "block";
-        document.getElementById("playButton").style.display = "none";
+
+
+    if (isMusicOn) {
+        document.getElementById("playButton").style.display = "none"; // Hide play button
+        document.getElementById("muteButton").style.display = "block"; // Show mute button
     } else {
-        backgroundMusic.pause();
-        document.getElementById("muteButton").style.display = "none";
-        document.getElementById("playButton").style.display = "block";
+        document.getElementById("muteButton").style.display = "none"; // Hide mute button
+        document.getElementById("playButton").style.display = "block"; // Show play button
     }
+    isMusicOn = !isMusicOn; // Toggle the music state
 }
 
-
-document.getElementById("muteButton").onclick = function() {
-    backgroundMusic.play();
-};
-
 // Initial setup
-backgroundMusic.currentTime = 0;
 loadFruitData();

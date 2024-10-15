@@ -32,12 +32,14 @@
     <img id="startButtonDisabled" src="img/BTN_Spin_d.png"/>
     <img id="startButtonEnabled" src="img/BTN_Spin.png" onclick="startGame()"/>
 
-    <button id="muteButton" onclick="toggleBackgroundMusic()">
+
+    <button id="playButton" onclick="toggleBackgroundMusic()">
+        <i class="fas fa-volume-up"></i>
+    </button>
+    <button id="muteButton" onclick="toggleBackgroundMusic()" style="display: none;">
         <i class="fas fa-volume-mute"></i>
     </button>
-    <button id="playButton" onclick="toggleBackgroundMusic()" style="display: none;">
-        <i class="fas fa-play"></i>
-    </button>
+
 
     <script src="game.js"></script>
     </body>
