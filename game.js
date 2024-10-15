@@ -26,11 +26,13 @@ function populateFruitData(data) {
 }
 
 function startGame() {
+   document.getElementById("startButtonEnabled").classList.add("rotating");
     rotateFruitImages();
     setTimeout(stopGame, 3000);
 }
 
 function stopGame() {
+   document.getElementById("startButtonEnabled").classList.remove("rotating");
     clearTimeout(imageRotationTimer);
     const randomIndex = Math.floor(Math.random() * fruitNames.length);
     const imageElement = document.getElementById("fruitDisplay");

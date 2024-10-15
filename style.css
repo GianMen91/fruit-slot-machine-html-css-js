@@ -142,3 +142,17 @@ body {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Apply rotation animation to the button */
+.rotating {
+    animation: rotate 2s linear infinite; /* 2s for full rotation, can be adjusted */
+}
