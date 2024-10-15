@@ -56,14 +56,31 @@ body {
     animation: fadeIn 5s;
 }
 
-#fruitSelection {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap'); /* Example: Poppins font */
+
+#fruitSelectionTitle {
     position: fixed;
+    color: white;
+    font-family: 'Poppins', sans-serif; /* Nice font */
+    font-weight: 700; /* Makes it bold */
     width: 20%;
     max-width: 71%;
     height: auto;
     top: 23%;
     left: 59%;
-    animation: fadeIn 5s;
+    animation: fadeIn 5s ease-in-out;
+}
+
+#fruitSelectionSubtitle {
+    position: fixed;
+    color: white;
+    font-weight: 400; /* Regular weight */
+    width: 20%;
+    max-width: 71%;
+    height: auto;
+    top: 31%;
+    left: 59%;
+    animation: fadeIn 5s ease-in-out;
 }
 
 #selectionPrompt {

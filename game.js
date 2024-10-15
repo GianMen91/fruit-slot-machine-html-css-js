@@ -27,7 +27,7 @@ function populateFruitData(data) {
 }
 
 function startGame() {
-   document.getElementById("startButtonEnabled").classList.add("rotating");
+    document.getElementById("startButtonEnabled").classList.add("rotating");
     rotateFruitImages();
     setTimeout(stopGame, 3000);
 }
@@ -38,16 +38,46 @@ function stopGame() {
     const randomIndex = Math.floor(Math.random() * fruitNames.length);
     const imageElement = document.getElementById("fruitDisplay");
     imageElement.src = fruitImagePaths[randomIndex];
-    const resultMessage = `<h3>You got: ${fruitNames[randomIndex]}</h3>`;
+    const resultMessage = `<h3>You got: ${fruitNames[randomIndex].toUpperCase()}</h3>`;
     backgroundMusic.pause();
 
-    const resultElement = (selectedFruit === fruitNames[randomIndex]) ? document.getElementById("winDisplay") : document.getElementById("loseDisplay");
-    (selectedFruit === fruitNames[randomIndex] ? winAudio : loseAudio).play();
+    const resultElement = (selectedFruit === fruitNames[randomIndex].toUpperCase()) ? document.getElementById("winDisplay") : document.getElementById("loseDisplay");
+    (selectedFruit === fruitNames[randomIndex].toUpperCase() ? winAudio : loseAudio).play();
 
-    hideGameElements();
     resultElement.style.visibility = "visible";
-    document.getElementById("gameResult").innerHTML = resultMessage;
+
+
+    document.getElementById("startButtonDisabled").style.visibility = "visible";
+    document.getElementById("startButtonEnabled").style.visibility = "hidden";
+
 }
+
+function restartGame(elementId) {
+    // Reset the selected fruit
+    selectedFruit = null;
+
+    // Remove any visual highlight from the selected fruit
+    const fruitImages = document.querySelectorAll(".fruitImage");
+    fruitImages.forEach(image => {
+        image.classList.remove("selectedFruit");
+    });
+    document.getElementById("fruitDisplay").style.opacity = 1;
+
+    // Hide the game result and any visible game elements
+    document.getElementById("gameResult").style.visibility = "hidden";
+    document.getElementById(elementId).style.visibility = "hidden";
+
+    document.getElementById("fruitDisplay").style.visibility = "visible";
+
+
+    // Reset the start button visibility
+    document.getElementById("startButtonEnabled").style.visibility = "hidden";
+    document.getElementById("startButtonDisabled").style.visibility = "visible";
+
+    // Optionally, reset the selection prompt or any other elements
+    document.getElementById("selectionPrompt").innerHTML = "";
+}
+
 
 function rotateFruitImages() {
     const imageElement = document.getElementById("fruitDisplay");
@@ -65,12 +95,6 @@ function fadeImage(element, opacityValue, fading) {
     }
 }
 
-function hideGameElements() {
-    document.getElementById("fruitSelection").style.visibility = "hidden";
-    document.getElementById("fruitOptions").style.visibility = "hidden";
-    document.getElementById("selectionPrompt").style.visibility = "hidden";
-}
-
 function selectFruit(fruitName) {
     document.getElementById("gameResult").innerHTML = "";
     selectedFruit = fruitName;
@@ -85,7 +109,6 @@ function selectFruit(fruitName) {
     const clickedFruit = Array.from(fruitImages).find(img => img.alt === fruitName);
     clickedFruit.classList.add("selectedFruit");
 
-    document.getElementById("selectionPrompt").innerHTML = `<h3>You selected ${fruitName}</h3><h3>Press the START button to test your luck!</h3>`;
     document.getElementById("startButtonEnabled").style.visibility = "visible";
     document.getElementById("startButtonDisabled").style.visibility = "hidden";
 }

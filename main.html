@@ -11,7 +11,8 @@
         <img id="loadingImage" src="img/BTN_Spin.png" alt="Loading..."/>
     </div>
 
-    <img id="fruitSelection" src="img/selex.png" alt="Fruit Selection"/>
+    <h2 id="fruitSelectionTitle">Pick your fruit and press the green button to spin!</h2>
+    <h3 id="fruitSelectionSubtitle">If your chosen fruit matches the final spin, you win!</h3>
 
     <div id="fruitOptions">
         <img class="fruitImage" src="img/SYM1.png" alt="WILD" onclick="selectFruit('WILD')"/>
@@ -23,8 +24,8 @@
     </div>
 
     <img id="fruitDisplay" src="img/SYM1.png" alt="Current Fruit"/>
-    <img id="winDisplay" src="img/win.png" alt="You Win!" onclick="window.location.reload()"/>
-    <img id="loseDisplay" src="img/lose.png" alt="You Lose!" onclick="window.location.reload()"/>
+    <img id="winDisplay" src="img/win.png" alt="You Win!" onclick="restartGame('winDisplay')"/>
+    <img id="loseDisplay" src="img/lose.png" alt="You Lose!" onclick="restartGame('loseDisplay')"/>
 
     <div id="selectionPrompt"></div>
     <img id="startButtonDisabled" src="img/BTN_Spin_d.png"/>
