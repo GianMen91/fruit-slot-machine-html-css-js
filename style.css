@@ -28,27 +28,6 @@ body {
     animation: fadeIn 5s;
 }
 
-#winDisplay {
-    position: fixed;
-    max-width: 35%;
-    width: 35%;
-    height: auto;
-    top: 28%;
-    left: 27%;
-    visibility: hidden;
-}
-
-#loseDisplay {
-    position: fixed;
-    max-width: 20%;
-    width: 35%;
-    height: auto;
-    top: 30%;
-    left: 46%;
-    transform: translate(-50%, -50%);
-    visibility: hidden;
-}
-
 
 #fruitOptions {
     position: fixed;
@@ -73,28 +52,6 @@ body {
     top: 23%;
     left: 41%;
 }
-
-#resultButton {
-    position: fixed;
-    visibility: hidden;
-    top: 31%;
-    left: 41%;
-    background-color: #92CA5B;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 15px 30px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#resultButton:hover {
-    background-color: #4B9C25; /* Darker shade on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-}
-
 
 
 #fruitSelectionTitle {
@@ -122,14 +79,6 @@ body {
     animation: fadeIn 5s ease-in-out;
 }
 
-#selectionPrompt {
-    color: white;
-    top: 80%;
-    position: absolute;
-    left: 63%;
-    width: 12%;
-}
-
 #startButtonDisabled {
     position: absolute;
     visibility: visible;
@@ -150,28 +99,22 @@ body {
     left: 86%;
 }
 
-#muteButton{
-    visibility: visible;
+#muteButton, #playButton {
     position: absolute;
-    width: 6%;
-    top: 80%;
-    left: 3%;
-}
-
-#playButton{
-    visibility: hidden;
-    position: absolute;
-    width: 6%;
-    top: 80%;
-    left: 3%;
-}
-
-#gameResult {
+    background: none;
+    font-size: 35px;
+    top: 93%;
+    left: 2%;
+    border: none;
+    cursor: pointer;
     color: white;
-    top: 72%;
-    position: absolute;
-    left: 65%;
 }
+
+#playButton {
+    display: none; /* Initially hidden */
+}
+
+
 
 .fruitImage{
     max-width: 13%;
@@ -179,15 +122,6 @@ body {
     height: auto;
 }
 
-#stopPrompt{
-    visibility: hidden;
-    position: absolute;
-    width: 13%;
-    max-width: 13%;
-    height: auto;
-    top: 62%;
-    left: 12%;
-}
 
 /* Add this to your style.css */
 

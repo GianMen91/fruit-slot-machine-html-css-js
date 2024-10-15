@@ -121,14 +121,15 @@ function selectFruit(fruitName) {
 function toggleBackgroundMusic() {
     if (backgroundMusic.paused) {
         backgroundMusic.play();
-        document.getElementById("muteButton").style.visibility = "visible";
-        document.getElementById("playButton").style.visibility = "hidden";
+        document.getElementById("muteButton").style.display = "block";
+        document.getElementById("playButton").style.display = "none";
     } else {
         backgroundMusic.pause();
-        document.getElementById("muteButton").style.visibility = "hidden";
-        document.getElementById("playButton").style.visibility = "visible";
+        document.getElementById("muteButton").style.display = "none";
+        document.getElementById("playButton").style.display = "block";
     }
 }
+
 
 document.getElementById("muteButton").onclick = function() {
     backgroundMusic.play();
