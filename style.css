@@ -1,7 +1,7 @@
 body {
     width: 100%;
     height: 100%;
-    background: #000000 url("img/BG.png") center center no-repeat;
+    background: #000000 url("img/BG2.png") center center no-repeat;
     background-attachment: fixed;
     background-size: 100% auto;
 }
@@ -17,57 +17,15 @@ body {
     animation: spin 2s;
 }
 
-#firstFruitDisplayed {
+#fruitDisplay {
     position: fixed;
     max-width: 13%;
     width: 13%;
     height: auto;
     top: 47%;
-    left: 10%;
+    left: 39%;
+    animation: fadeIn 5s;
 }
-
-#secondFruitDisplayed {
-    position: fixed;
-    max-width: 13%;
-    width: 13%;
-    height: auto;
-    top: 47%;
-    left: 38%;
-}
-
-#thirdFruitDisplayed {
-    position: fixed;
-    max-width: 13%;
-    width: 13%;
-    height: auto;
-    top: 47%;
-    left: 63%;
-}
-
-@keyframes spinVertical {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-100%);
-    }
-}
-
-#firstFruitDisplayed, #secondFruitDisplayed, #thirdFruitDisplayed {
-    position: fixed;
-    max-width: 13%;
-    width: 13%;
-    height: auto;
-    top: 47%;
-    animation-duration: 0.5s; /* Duration of each spin */
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-.spin {
-    animation-name: spinVertical;
-}
-
 
 #winDisplay {
     position: fixed;
@@ -91,20 +49,20 @@ body {
 
 #fruitOptions {
     position: fixed;
-    width: 43%;
-    /* height: 100%; */
-    top: 14%;
-    right: -28%;
+    width: 60%;
+    height: 100%;
+    top: 42%;
+    left: 62%;
     animation: fadeIn 5s;
 }
 
 #fruitSelection {
     position: fixed;
-    width: 15%;
-    max-width: 62%;
+    width: 20%;
+    max-width: 71%;
     height: auto;
-    top: 3%;
-    right: 2%;
+    top: 23%;
+    left: 59%;
     animation: fadeIn 5s;
 }
 
@@ -119,22 +77,21 @@ body {
 #startButtonDisabled {
     position: absolute;
     visibility: visible;
-    max-width: 9%;
-    width: 86%;
+    max-width: 10%;
+    width: 50%;
     height: auto;
-    top: 388px;
-    right: 87px;
-    animation: fadeIn 5s;
+    top: 41%;
+    left: 86%;
 }
 
 #startButtonEnabled {
-   position: absolute;
-   visibility: hidden;
-   max-width: 9%;
-   width: 86%;
-   height: auto;
-   top: 388px;
-   right: 87px;
+    position: absolute;
+    visibility: hidden;
+    max-width: 10%;
+    width: 50%;
+    height: auto;
+    top: 41%;
+    left: 86%;
 }
 
 #muteButton{
@@ -151,7 +108,6 @@ body {
     width: 6%;
     top: 80%;
     left: 3%;
-
 }
 
 #gameResult {
@@ -161,7 +117,7 @@ body {
     left: 65%;
 }
 
-.fruitIcon{
+.fruitImage{
     max-width: 13%;
     width: 13%;
     height: auto;
@@ -176,7 +132,6 @@ body {
     top: 62%;
     left: 12%;
 }
-
 
 @keyframes spin {
     from { transform: rotate(0deg); }

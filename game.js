@@ -25,66 +25,34 @@ function populateFruitData(data) {
     }
 }
 
-let spinning = false;
-
 function startGame() {
-    if (!spinning) {
-        spinFruits();
-    }
-    setTimeout(stopGame, 3000); // Stop after 3 seconds
-}
-
-function spinFruits() {
-    spinning = true;
-    // Add spin class to start the animation
-    document.getElementById("firstFruitDisplayed").classList.add("spin");
-    document.getElementById("secondFruitDisplayed").classList.add("spin");
-    document.getElementById("thirdFruitDisplayed").classList.add("spin");
-
-    // Rotate images periodically during the spin
-    rotateFruitImage("firstFruitDisplayed");
-    rotateFruitImage("secondFruitDisplayed");
-    rotateFruitImage("thirdFruitDisplayed");
-}
-
-function rotateFruitImage(elementId) {
-    const imageElement = document.getElementById(elementId);
-    const randomIndex = Math.floor(Math.random() * fruitImagePaths.length);
-    imageElement.src = fruitImagePaths[randomIndex];
-
-    if (spinning) {
-        setTimeout(() => rotateFruitImage(elementId), 300); // Adjust the speed here
-    }
+    rotateFruitImages();
+    setTimeout(stopGame, 3000);
 }
 
 function stopGame() {
-    spinning = false;
+    clearTimeout(imageRotationTimer);
+    const randomIndex = Math.floor(Math.random() * fruitNames.length);
+    const imageElement = document.getElementById("fruitDisplay");
+    imageElement.src = fruitImagePaths[randomIndex];
+    const resultMessage = `<h3>You got: ${fruitNames[randomIndex]}</h3>`;
+    backgroundMusic.pause();
 
-    // Stop the animation and clear the spin class
-    document.getElementById("firstFruitDisplayed").classList.remove("spin");
-    document.getElementById("secondFruitDisplayed").classList.remove("spin");
-    document.getElementById("thirdFruitDisplayed").classList.remove("spin");
+    const resultElement = (selectedFruit === fruitNames[randomIndex]) ? document.getElementById("winDisplay") : document.getElementById("loseDisplay");
+    (selectedFruit === fruitNames[randomIndex] ? winAudio : loseAudio).play();
 
-    const firstFruit = getRandomFruit();
-    const secondFruit = getRandomFruit();
-    const thirdFruit = getRandomFruit();
-
-    // Show the final result for each fruit display
-    document.getElementById("firstFruitDisplayed").src = fruitImagePaths[firstFruit];
-    document.getElementById("secondFruitDisplayed").src = fruitImagePaths[secondFruit];
-    document.getElementById("thirdFruitDisplayed").src = fruitImagePaths[thirdFruit];
-
-    // Check for win or lose
-    const resultElement = (firstFruit === secondFruit && secondFruit === thirdFruit) ? document.getElementById("winDisplay") : document.getElementById("loseDisplay");
-    (firstFruit === secondFruit && secondFruit === thirdFruit ? winAudio : loseAudio).play();
-
+    hideGameElements();
     resultElement.style.visibility = "visible";
+    document.getElementById("gameResult").innerHTML = resultMessage;
 }
 
-function getRandomFruit() {
-    return Math.floor(Math.random() * fruitImagePaths.length);
+function rotateFruitImages() {
+    const imageElement = document.getElementById("fruitDisplay");
+    const randomIndex = Math.floor(Math.random() * fruitImagePaths.length);
+    imageElement.src = fruitImagePaths[randomIndex];
+    fadeImage(imageElement, 100, true);
+    imageRotationTimer = setTimeout(rotateFruitImages, 300);
 }
-
 
 function fadeImage(element, opacityValue, fading) {
     opacityValue += fading ? -1 : 1;
