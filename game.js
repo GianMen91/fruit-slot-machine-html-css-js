@@ -116,7 +116,6 @@ function selectFruit(fruitName) {
 
 function toggleBackgroundMusic() {
 
-
     if (isMusicOn) {
         document.getElementById("playButton").style.display = "none"; // Hide play button
         document.getElementById("muteButton").style.display = "block"; // Show mute button
