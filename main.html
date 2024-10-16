@@ -1,42 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Declaring the document as HTML5 -->
     <meta charset="UTF-8"/>
+    <!-- Setting the viewport for responsive design on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0">
+
+    <!-- Including Font Awesome icons for the volume buttons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Title of the webpage that appears in the browser tab -->
     <title>Fruit Slot Machine</title>
+
+    <!-- Link to external CSS file for styling -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div id="loadingScreen">
-        <img id="loadingImage" src="img/BTN_Spin.png" alt="Loading..."/>
-    </div>
+    <body>
+        <!-- Loading screen displayed while the game resources are being loaded -->
+        <div id="loadingScreen">
+            <!-- Loading image displayed during loading -->
+            <img id="loadingImage" src="img/BTN_Spin.png" alt="Loading..."/>
+        </div>
 
-    <h2 id="fruitSelectionTitle">Pick your fruit and press the green button to spin!</h2>
-    <h3 id="fruitSelectionSubtitle">If your chosen fruit matches the final spin, you win!</h3>
+        <!-- Title instructing the player to pick a fruit and start the game -->
+        <h2 id="fruitSelectionTitle">Pick your fruit and press the green button to spin!</h2>
 
-    <div id="fruitOptions">
-        <img class="fruitImage" src="img/SYM1.png" alt="WILD" onclick="selectFruit('WILD')"/>
-        <img class="fruitImage" src="img/SYM2.png" alt="GRAPE" onclick="selectFruit('GRAPE')"/><br>
-        <img class="fruitImage" src="img/SYM3.png" alt="STRAWBERRY" onclick="selectFruit('STRAWBERRY')"/>
-        <img class="fruitImage" src="img/SYM4.png" alt="PINEAPPLE" onclick="selectFruit('PINEAPPLE')"/><br>
-        <img class="fruitImage" src="img/SYM5.png" alt="LEMON" onclick="selectFruit('LEMON')"/>
-        <img class="fruitImage" src="img/SYM6.png" alt="MELON" onclick="selectFruit('MELON')"/>
-    </div>
+        <!-- Subtitle explaining how to win the game -->
+        <h3 id="fruitSelectionSubtitle">If your chosen fruit matches the final spin, you win!</h3>
 
-    <h2 id="resultText"></h2>
-    <img id="fruitDisplay" src="img/SYM1.png" alt="Current Fruit"/>
+        <!-- Container for fruit options that the player can select -->
+        <div id="fruitOptions">
+            <!-- Images representing different fruits the player can choose from -->
+            <!-- The `onclick` attribute calls the `selectFruit()` function, passing the fruit name -->
+            <img class="fruitImage" src="img/SYM1.png" alt="WILD" onclick="selectFruit('WILD')"/>
+            <img class="fruitImage" src="img/SYM2.png" alt="GRAPE" onclick="selectFruit('GRAPE')"/><br>
+            <img class="fruitImage" src="img/SYM3.png" alt="STRAWBERRY" onclick="selectFruit('STRAWBERRY')"/>
+            <img class="fruitImage" src="img/SYM4.png" alt="PINEAPPLE" onclick="selectFruit('PINEAPPLE')"/><br>
+            <img class="fruitImage" src="img/SYM5.png" alt="LEMON" onclick="selectFruit('LEMON')"/>
+            <img class="fruitImage" src="img/SYM6.png" alt="MELON" onclick="selectFruit('MELON')"/>
+        </div>
 
-    <img id="startButtonDisabled" src="img/BTN_Spin_d.png"/>
-    <img id="startButtonEnabled" src="img/BTN_Spin.png" onclick="startGame()"/>
+        <!-- Placeholder for displaying the result (win or lose) -->
+        <h2 id="resultText"></h2>
 
-    <button id="playButton" onclick="toggleBackgroundMusic()">
-        <i class="fas fa-volume-up"></i>
-    </button>
-    <button id="muteButton" onclick="toggleBackgroundMusic()" style="display: none;">
-        <i class="fas fa-volume-mute"></i>
-    </button>
+        <!-- Image element to display the current fruit during and after spinning -->
+        <img id="fruitDisplay" src="img/SYM1.png" alt="Current Fruit"/>
 
-    <script src="game.js"></script>
+        <!-- Disabled start button (visible when the game is unavailable) -->
+        <img id="startButtonDisabled" src="img/BTN_Spin_d.png"/>
+
+        <!-- Enabled start button (visible when the game is ready to start) -->
+        <!-- The `onclick` attribute calls the `startGame()` function to begin the game -->
+        <img id="startButtonEnabled" src="img/BTN_Spin.png" onclick="startGame()"/>
+
+        <!-- Button to play background music (visible when music is on) -->
+        <!-- The `onclick` attribute calls `toggleBackgroundMusic()` to toggle music on/off -->
+        <button id="playButton" onclick="toggleBackgroundMusic()">
+            <!-- Font Awesome icon for volume up (indicates music is playing) -->
+            <i class="fas fa-volume-up"></i>
+        </button>
+
+        <!-- Button to mute background music (visible when music is off) -->
+        <!-- Initially hidden, and displayed when the user toggles the music off -->
+        <button id="muteButton" onclick="toggleBackgroundMusic()" style="display: none;">
+            <!-- Font Awesome icon for volume mute (indicates music is muted) -->
+            <i class="fas fa-volume-mute"></i>
+        </button>
+
+        <!-- Link to the external JavaScript file for game logic -->
+        <script src="game.js"></script>
     </body>
 </html>
