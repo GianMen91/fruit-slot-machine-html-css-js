@@ -1,6 +1,6 @@
 # 🍉 Fruit Slot Machine Game 🎰
 
-Welcome to **Fruit Slot Machine**, a fun and interactive web-based game where players try their luck by spinning fruits! Developed with **HTML**, **CSS**, and **JavaScript**, this project showcases interactive UI development, event-driven programming, and responsive design skills.
+Welcome to **Fruit Slot Machine**, a fun and interactive web-based game where players try their luck by spinning fruits! Developed with **HTML**, **CSS**, and **JavaScript**, this project showcases interactive UI development, event-driven programming skills.
 
 Feel free to explore, select your favorite fruit, and spin for a chance to win! 🍀
 
@@ -9,7 +9,6 @@ Feel free to explore, select your favorite fruit, and spin for a chance to win! 
 - **Interactive Fruit Selection**: Players can choose their favorite fruit from a set of fruit images. The UI visually highlights the selected fruit to enhance user experience.
 - **Randomized Spin Mechanics**: On clicking the spin button, the fruit symbols alternate rapidly before landing on a random result.
 - **Win/Lose Feedback**: Players receive instant feedback after each spin. If the selected fruit matches the result, they win; otherwise, they lose. The game features playful win/loss sounds for added excitement.
-- **Responsive Design**: The game is fully responsive, adapting to both **desktop** and **mobile devices**. It works smoothly in **portrait** and **landscape** modes for a great user experience across all devices.
 - **Custom Background Music**: Background music can be toggled on or off, providing an immersive experience for the player.
 
 ## 🎯 How to Play
@@ -25,7 +24,7 @@ Feel free to explore, select your favorite fruit, and spin for a chance to win! 
 - **CSS3**: For styling the game elements and providing smooth animations and responsive design.
 - **JavaScript (ES6+)**: The game logic, including fruit rotation, event handling, randomization, and state management, is implemented in pure JavaScript.
 - **Font Awesome**: For implementing dynamic sound control buttons (volume on/off).
-- **Media Queries**: To ensure the game looks great on both desktop and mobile devices (landscape and portrait).
+- **Media Queries**: To enhance the game layout for desktop and mobile devices, although further optimizations for mobile and tablet views are planned.
 
 ## 🔥 Project Highlights
 
