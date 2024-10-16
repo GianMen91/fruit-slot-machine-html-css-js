@@ -35,7 +35,7 @@ Feel free to explore, select your favorite fruit, and spin for a chance to win! 
 - **Audio Control**: Includes background music control with toggling options, using JavaScript to manage media states (play, pause).
 
 ## 📜 Disclaimer
-All fruit images and symbols used in this game are sourced from NetEnt's Reel Rush slot game. These assets are their intellectual property, and I have used them solely for educational purposes as part of an assignment while working on a test project. The game developed here is not intended for commercial use.
+All fruit images and symbols used in this game are sourced from [NetEnt](https://www.netent.com/en/)'s [Reel Rush](https://games.netent.com/video-slots/reel-rush/) slot game. These assets are their intellectual property, and I have used them solely for educational purposes as part of an assignment while working on a test project. The game developed here is not intended for commercial use.
 
 ## 🛠 Installation & Setup
 
