@@ -3,7 +3,7 @@ body {
 	height: 100%;
 	background: #000000 url("img/BG2.png") center center no-repeat;
 	background-attachment: fixed;
-	background-size: 100% auto;
+	background-size: cover;
 }
 
 #loadingImage {
@@ -185,6 +185,12 @@ body {
 		background-position: right;
 	}
 
+	h2,
+    h3 {
+        font-size: 2.5vw;
+        /* Responsive font size based on viewport width */
+    }
+
 	#loadingImage,
 	#fruitOptions {
 		width: 90%;
@@ -246,6 +252,10 @@ body {
 
 /* Mobile Landscape Adjustments */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+	body {
+		background-size: cover;
+	}
 
 	h2,
 	h3 {
