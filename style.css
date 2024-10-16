@@ -1,277 +1,269 @@
+/* Import Google Font 'Poppins' with weights 400 (regular) and 700 (bold) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 body {
-	width: 100%;
-	height: 100%;
-	background: #000000 url("img/BG2.png") center center no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
+	width: 100%; /* Set body width to 100% of the viewport */
+	height: 100%; /* Set body height to 100% of the viewport */
+	background: #000000 url("img/BG2.png") center center no-repeat; /* Set black background with centered image */
+	background-attachment: fixed; /* Background stays fixed when scrolling */
+	background-size: cover; /* Image covers the entire background */
 }
 
 #loadingImage {
-	position: absolute;
-	visibility: hidden;
-	max-width: 9%;
-	width: 9%;
-	height: auto;
-	top: 47%;
-	left: 41%;
-	animation: spin 2s;
+	position: absolute; /* Position element relative to its nearest positioned ancestor */
+	visibility: hidden; /* Initially hidden */
+	max-width: 9%; /* Max width of the image */
+	width: 9%; /* Set width */
+	height: auto; /* Maintain aspect ratio */
+	top: 47%; /* Vertical position */
+	left: 41%; /* Horizontal position */
+	animation: spin 2s; /* Apply spinning animation */
 }
 
 #fruitDisplay {
-	position: fixed;
-	opacity: 1;
-	max-width: 13%;
-	width: 13%;
-	height: auto;
-	top: 47%;
-	left: 39%;
-	animation: fadeIn 5s;
+	position: fixed; /* Fix position relative to viewport */
+	opacity: 1; /* Fully visible */
+	max-width: 13%; /* Max width of the display */
+	width: 13%; /* Set width */
+	height: auto; /* Maintain aspect ratio */
+	top: 47%; /* Vertical position */
+	left: 39%; /* Horizontal position */
+	animation: fadeIn 5s; /* Apply fade-in animation over 5 seconds */
 }
 
 #fruitOptions {
-	position: fixed;
-	width: 60%;
-	height: 100%;
-	top: 42%;
-	left: 62%;
-	animation: fadeIn 5s;
+	position: fixed; /* Fix position */
+	width: 60%; /* Set width */
+	height: 100%; /* Full height */
+	top: 42%; /* Vertical position */
+	left: 62%; /* Horizontal position */
+	animation: fadeIn 5s; /* Apply fade-in animation */
 }
 
 #resultText {
-	visibility: hidden;
-	position: fixed;
-	color: white;
-	font-family: 'Poppins', sans-serif;
-	font-weight: 700;
-	width: 20%;
-	max-width: 71%;
-	height: auto;
-	top: 23%;
-	left: 41%;
+	visibility: hidden; /* Initially hidden */
+	position: fixed; /* Fix position */
+	color: white; /* White text */
+	font-family: 'Poppins', sans-serif; /* Use 'Poppins' font */
+	font-weight: 700; /* Bold weight */
+	width: 20%; /* Set width */
+	max-width: 71%; /* Set max width */
+	height: auto; /* Maintain aspect ratio */
+	top: 23%; /* Vertical position */
+	left: 41%; /* Horizontal position */
 }
 
 #fruitSelectionTitle {
-	position: fixed;
-	color: white;
-	font-family: 'Poppins', sans-serif;
-	font-weight: 700;
-	width: 20%;
-	max-width: 71%;
-	height: auto;
-	top: 23%;
-	left: 59%;
-	animation: fadeIn 5s ease-in-out;
+	position: fixed; /* Fix position */
+	color: white; /* White text */
+	font-family: 'Poppins', sans-serif; /* Use 'Poppins' font */
+	font-weight: 700; /* Bold weight */
+	width: 20%; /* Set width */
+	max-width: 71%; /* Set max width */
+	height: auto; /* Maintain aspect ratio */
+	top: 23%; /* Vertical position */
+	left: 59%; /* Horizontal position */
+	animation: fadeIn 5s ease-in-out; /* Fade-in animation with ease-in-out timing */
 }
 
 #fruitSelectionSubtitle {
-	position: fixed;
-	color: white;
-	font-weight: 400;
-	/* Regular weight */
-	width: 20%;
-	max-width: 71%;
-	height: auto;
-	top: 31%;
-	left: 59%;
-	animation: fadeIn 5s ease-in-out;
+	position: fixed; /* Fix position */
+	color: white; /* White text */
+	font-weight: 400; /* Regular weight for subtitle */
+	width: 20%; /* Set width */
+	max-width: 71%; /* Set max width */
+	height: auto; /* Maintain aspect ratio */
+	top: 32%; /* Vertical position */
+	left: 59%; /* Horizontal position */
+	animation: fadeIn 5s ease-in-out; /* Apply fade-in animation */
 }
 
 #startButtonDisabled, #startButtonEnabled {
-	position: absolute;
-	visibility: visible;
-	max-width: 10%;
-	width: 50%;
-	height: auto;
-	top: 41%;
-	left: 86%;
+	position: absolute; /* Absolute position */
+	visibility: visible; /* Initially visible */
+	max-width: 10%; /* Set max width */
+	width: 50%; /* Set width */
+	height: auto; /* Maintain aspect ratio */
+	top: 41%; /* Vertical position */
+	left: 86%; /* Horizontal position */
 }
 
- #startButtonEnabled {
-	visibility: hidden;
- }
+#startButtonEnabled {
+	visibility: hidden; /* Initially hidden */
+}
 
-#muteButton,
-#playButton {
-	position: absolute;
-	background: none;
-	font-size: 35px;
-	top: 93%;
-	left: 2%;
-	border: none;
-	cursor: pointer;
-	color: white;
+#muteButton, #playButton {
+	position: absolute; /* Absolute position */
+	background: none; /* No background */
+	font-size: 35px; /* Font size for buttons */
+	top: 93%; /* Vertical position */
+	left: 2%; /* Horizontal position */
+	border: none; /* No border */
+	cursor: pointer; /* Pointer cursor */
+	color: white; /* White text color */
 }
 
 #muteButton {
-	display: none;
+	display: none; /* Initially hidden */
 }
 
 .fruitImage {
-	max-width: 13%;
-	width: 13%;
-	height: auto;
+	max-width: 13%; /* Max width for fruit images */
+	width: 13%; /* Set width */
+	height: auto; /* Maintain aspect ratio */
 }
 
 .selectedFruit {
-	border: 3px solid #00D9FF;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba(0, 217, 255, 0.7);
+	border: 3px solid #00D9FF; /* Blue border */
+	border-radius: 10px; /* Rounded corners */
+	box-shadow: 0px 0px 10px rgba(0, 217, 255, 0.7); /* Glow effect */
 }
 
 @keyframes spin {
 	from {
-		transform: rotate(0deg);
+		transform: rotate(0deg); /* Start at 0 degrees */
 	}
-
 	to {
-		transform: rotate(360deg);
+		transform: rotate(360deg); /* Rotate to 360 degrees */
 	}
 }
 
 @keyframes fadeIn {
 	from {
-		opacity: 0;
+		opacity: 0; /* Start fully transparent */
 	}
-
 	to {
-		opacity: 1;
+		opacity: 1; /* End fully visible */
 	}
 }
 
 @keyframes rotate {
 	from {
-		transform: rotate(0deg);
+		transform: rotate(0deg); /* Start at 0 degrees */
 	}
-
 	to {
-		transform: rotate(360deg);
+		transform: rotate(360deg); /* Rotate 360 degrees */
 	}
 }
 
 .rotating {
-	animation: rotate 2s linear infinite;
+	animation: rotate 2s linear infinite; /* Infinite rotation with 2 seconds duration */
 }
 
+/* Mobile view (screen width max 767px) */
 @media only screen and (max-width: 767px) {
 	body {
-		background-size: cover;
-		background-position: right;
+		background-size: cover; /* Cover background */
+		background-position: right; /* Shift background position */
 	}
 
-	h2,
-    h3 {
-        font-size: 2.5vw;
-    }
+	h2, h3 {
+		font-size: 2.5vw; /* Adjust font size */
+	}
 
-	#loadingImage,
-	#fruitOptions {
-		width: 90%;
-		left: 15%;
+	#loadingImage, #fruitOptions {
+		width: 90%; /* Adjust width for mobile */
+		left: 15%; /* Adjust position */
 	}
 
 	#fruitDisplay {
-		left: 17%;
-		top: 79%;
-		min-width: 22%
+		left: 17%; /* Adjust position */
+		top: 79%; /* Adjust position */
+		min-width: 22%; /* Adjust size */
 	}
 
 	#fruitSelectionTitle {
-		top: 9%;
-		width: 40%;
-		left: 10%;
-		font-size: 1.2em;
+		top: 9%; /* Adjust title position */
+		width: 40%; /* Adjust width */
+		left: 10%; /* Adjust position */
+		font-size: 1.2em; /* Adjust font size */
 	}
 
 	#fruitSelectionSubtitle {
-		top: 22%;
-		width: 40%;
-		left: 10%;
-		font-size: 1.2em;
+		top: 22%; /* Adjust subtitle position */
+		width: 40%; /* Adjust width */
+		left: 10%; /* Adjust position */
+		font-size: 1.2em; /* Adjust font size */
 	}
 
 	#resultText {
-		width: 84%;
-		left: 17%;
-		top: 90%;
+		width: 84%; /* Adjust width */
+		left: 17%; /* Adjust position */
+		top: 90%; /* Adjust position */
 	}
 
 	#startButtonDisabled {
-		visibility: visible;
-		max-width: 12%;
-		width: 50%;
-		top: 66%;
-		left: 22% !important;
+		visibility: visible; /* Keep visible */
+		max-width: 12%; /* Adjust size */
+		width: 50%; /* Adjust width */
+		top: 66%; /* Adjust position */
+		left: 22% !important; /* Override left position */
 	}
 
 	#startButtonEnabled {
-		visibility: hidden;
-		max-width: 12%;
-		width: 50%;
-		top: 66%;
-		left: 22% !important;
+		visibility: hidden; /* Keep hidden */
+		max-width: 12%; /* Adjust size */
+		width: 50%; /* Adjust width */
+		top: 66%; /* Adjust position */
+		left: 22% !important; /* Override left position */
 	}
 
-	#playButton,
-	#muteButton {
-		font-size: 25px;
+	#playButton, #muteButton {
+		font-size: 25px; /* Adjust button font size */
 	}
 
 	.fruitImage {
-		width: 30%;
+		width: 30%; /* Adjust fruit image size */
 	}
 }
 
+/* Tablet view (screen width between 768px and 1024px) */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-
 	body {
-		background-size: cover;
+		background-size: cover; /* Cover background */
 	}
 
-	h2,
-	h3 {
-		font-size: 2.5vw;
+	h2, h3 {
+		font-size: 2.5vw; /* Adjust font size */
 	}
 
 	#fruitSelectionTitle {
-		top: 4%;
-		width: 20%;
-		font-size: 1.2em;
+		top: 4%; /* Adjust position */
+		width: 20%; /* Adjust width */
+		font-size: 1.2em; /* Adjust font size */
 	}
 
 	#fruitSelectionSubtitle {
-		top: 19%;
-		width: 20%;
-		font-size: 1.2em;
+		top: 19%; /* Adjust position */
+		width: 20%; /* Adjust width */
+		font-size: 1.2em; /* Adjust font size */
 	}
 
 	#fruitOptions {
-		position: fixed;
-		width: 71%;
-		height: 100%;
-		top: 42%;
-		left: 61%;
-		animation: fadeIn 5s;
+		position: fixed; /* Fix position */
+		width: 71%; /* Adjust width */
+		height: 100%; /* Full height */
+		top: 42%; /* Adjust position */
+		left: 61%; /* Adjust position */
+		animation: fadeIn 5s; /* Fade-in animation */
 	}
 
 	#fruitDisplay {
-		position: fixed;
-		opacity: 1;
-		min-width: 18%;
-		height: auto;
-		top: 47%;
-		left: 36%;
-		animation: fadeIn 5s;
+		position: fixed; /* Fix position */
+		opacity: 1; /* Fully visible */
+		min-width: 18%; /* Adjust size */
+		height: auto; /* Maintain aspect ratio */
+		top: 47%; /* Adjust position */
+		left: 36%; /* Adjust position */
+		animation: fadeIn 5s; /* Apply fade-in animation */
 	}
 
 	#resultText {
-		left: 39%;
+		left: 39%; /* Adjust position */
 	}
 
-	#muteButton,
-	#playButton {
-		font-size: 24px;
-		top: 91%;
+	#muteButton, #playButton {
+		font-size: 24px; /* Adjust button font size */
+		top: 91%; /* Adjust position */
 	}
 }
