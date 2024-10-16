@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 body {
 	width: 100%;
 	height: 100%;
@@ -28,7 +30,6 @@ body {
 	animation: fadeIn 5s;
 }
 
-
 #fruitOptions {
 	position: fixed;
 	width: 60%;
@@ -38,17 +39,12 @@ body {
 	animation: fadeIn 5s;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-/* Example: Poppins font */
-
 #resultText {
 	visibility: hidden;
 	position: fixed;
 	color: white;
 	font-family: 'Poppins', sans-serif;
-	/* Nice font */
 	font-weight: 700;
-	/* Makes it bold */
 	width: 20%;
 	max-width: 71%;
 	height: auto;
@@ -56,14 +52,11 @@ body {
 	left: 41%;
 }
 
-
 #fruitSelectionTitle {
 	position: fixed;
 	color: white;
 	font-family: 'Poppins', sans-serif;
-	/* Nice font */
 	font-weight: 700;
-	/* Makes it bold */
 	width: 20%;
 	max-width: 71%;
 	height: auto;
@@ -85,7 +78,7 @@ body {
 	animation: fadeIn 5s ease-in-out;
 }
 
-#startButtonDisabled {
+#startButtonDisabled, #startButtonEnabled {
 	position: absolute;
 	visibility: visible;
 	max-width: 10%;
@@ -95,15 +88,9 @@ body {
 	left: 86%;
 }
 
-#startButtonEnabled {
-	position: absolute;
+ #startButtonEnabled {
 	visibility: hidden;
-	max-width: 10%;
-	width: 50%;
-	height: auto;
-	top: 41%;
-	left: 86%;
-}
+ }
 
 #muteButton,
 #playButton {
@@ -121,26 +108,17 @@ body {
 	display: none;
 }
 
-
 .fruitImage {
 	max-width: 13%;
 	width: 13%;
 	height: auto;
 }
 
-
-/* Add this to your style.css */
-
-/* Style for the selected fruit (highlight) */
 .selectedFruit {
 	border: 3px solid #00D9FF;
-	/* Add a blue border around the selected fruit */
 	border-radius: 10px;
-	/* Rounded corners */
 	box-shadow: 0px 0px 10px rgba(0, 217, 255, 0.7);
-	/* Add a glow effect */
 }
-
 
 @keyframes spin {
 	from {
@@ -172,13 +150,10 @@ body {
 	}
 }
 
-/* Apply rotation animation to the button */
 .rotating {
 	animation: rotate 2s linear infinite;
-	/* 2s for full rotation, can be adjusted */
 }
 
-/* General Mobile Adjustments */
 @media only screen and (max-width: 767px) {
 	body {
 		background-size: cover;
@@ -188,7 +163,6 @@ body {
 	h2,
     h3 {
         font-size: 2.5vw;
-        /* Responsive font size based on viewport width */
     }
 
 	#loadingImage,
@@ -215,7 +189,6 @@ body {
 		width: 40%;
 		left: 10%;
 		font-size: 1.2em;
-
 	}
 
 	#resultText {
@@ -250,7 +223,6 @@ body {
 	}
 }
 
-/* Mobile Landscape Adjustments */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
 
 	body {
@@ -260,22 +232,18 @@ body {
 	h2,
 	h3 {
 		font-size: 2.5vw;
-		/* Responsive font size based on viewport width */
 	}
 
 	#fruitSelectionTitle {
 		top: 4%;
 		width: 20%;
-
 		font-size: 1.2em;
 	}
 
 	#fruitSelectionSubtitle {
 		top: 19%;
 		width: 20%;
-
 		font-size: 1.2em;
-
 	}
 
 	#fruitOptions {
