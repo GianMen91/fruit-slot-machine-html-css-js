@@ -156,3 +156,95 @@ body {
 .rotating {
     animation: rotate 2s linear infinite; /* 2s for full rotation, can be adjusted */
 }
+
+/* General Mobile Adjustments */
+@media only screen and (max-width: 767px) {
+    body {
+        background-size: cover;
+        background-position: right;
+    }
+
+    #loadingImage, #fruitOptions {
+        width: 90%;
+        left: 15%;
+    }
+
+    #fruitDisplay{
+        left: 17%;
+        top: 79%;
+        min-width: 22%
+    }
+
+    #fruitSelectionTitle{
+        top: 9%;
+                width: 40%;
+                left: 10%;
+                font-size: 1.2em;
+    }
+
+    #fruitSelectionSubtitle {
+     top: 22%;
+                    width: 40%;
+                    left: 10%;
+                    font-size: 1.2em;
+
+    }
+
+#resultText {
+        width: 84%;
+        left: 17%;
+        top: 90%;
+    }
+
+    #startButtonDisabled{
+     visibility: visible;
+        max-width: 12%;
+        width: 50%;
+        top: 66%;
+        left: 22% !important;
+    }
+
+     #startButtonEnabled {
+     visibility: hidden;
+        max-width: 12%;
+             width: 50%;
+             top: 66%;
+             left: 22% !important;
+     }
+
+    #playButton, #muteButton {
+        font-size: 25px;
+    }
+
+    .fruitImage {
+        width: 30%;
+    }
+}
+
+/* Mobile Landscape Adjustments */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    #loadingImage, #fruitOptions {
+        width: 40%;
+        left: 30%;
+    }
+
+    #fruitSelectionTitle, #fruitSelectionSubtitle {
+        width: 60%;
+        left: 20%;
+    }
+
+    #resultText {
+        width: 60%;
+        left: 20%;
+    }
+
+
+
+    #playButton, #muteButton {
+        font-size: 30px;
+    }
+
+    .fruitImage {
+        width: 25%;
+    }
+}
