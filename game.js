@@ -1,130 +1,189 @@
+// Array to store the image paths of the fruits
 const fruitImagePaths = [];
+
+// Array to store the names of the fruits
 const fruitNames = [];
+
+// Timer for rotating fruit images
 let imageRotationTimer;
+
+// Audio elements for win and lose sounds
 const winAudio = new Audio('sound/win.mp3');
 const loseAudio = new Audio('sound/lose.mp3');
-let selectedFruit;
-let previouslySelectedElement = null;
-let isMusicOn = true; // Track whether the music is on or off
 
+// Variable to store the currently selected fruit by the player
+let selectedFruit;
+
+// To store the previously selected fruit element (for CSS styling)
+let previouslySelectedElement = null;
+
+// Variable to track whether the music is on or off
+let isMusicOn = true;
+
+/**
+ * Function to load fruit data from a JSON file (symbols.json).
+ * It sends an HTTP request to retrieve the data and calls the function to populate it.
+ */
 function loadFruitData() {
     const request = new XMLHttpRequest();
     request.onreadystatechange = function () {
+        // Check if the request is completed and successful
         if (request.readyState === 4 && request.status === 200) {
+            // Populate the fruit data into the arrays
             populateFruitData(JSON.parse(request.responseText));
         }
     };
+    // Send GET request to retrieve the symbols.json file
     request.open("GET", "symbols.json", true);
     request.send();
 }
 
+/**
+ * Function to populate fruit image paths and names into respective arrays.
+ * @param {Object} data - The JSON data containing fruit symbols.
+ */
 function populateFruitData(data) {
     const fruits = data.symbols;
     for (let i = 0; i < fruits.length; i++) {
+        // Store fruit image paths and names
         fruitImagePaths[i] = fruits[i].src;
         fruitNames[i] = fruits[i].name;
     }
 }
 
+/**
+ * Function to start the game. It starts the rotation of fruit images
+ * and sets a timer to stop the game after 3 seconds.
+ */
 function startGame() {
+    // Add rotation animation to the start button
     document.getElementById("startButtonEnabled").classList.add("rotating");
+    // Begin rotating fruit images
     rotateFruitImages();
+    // Stop the game after 3 seconds
     setTimeout(stopGame, 3000);
+    // Make the fruit display visible
     document.getElementById("fruitDisplay").style.opacity = 1;
 }
 
+/**
+ * Function to stop the game. It stops the rotation, selects a random fruit, and displays the result (win or lose).
+ */
 function stopGame() {
+    // Remove the rotation animation from the start button
     document.getElementById("startButtonEnabled").classList.remove("rotating");
+    // Stop the fruit image rotation
     clearTimeout(imageRotationTimer);
+
+    // Select a random fruit and display it
     const randomIndex = Math.floor(Math.random() * fruitNames.length);
     const imageElement = document.getElementById("fruitDisplay");
     imageElement.src = fruitImagePaths[randomIndex];
 
-    // Determine if the user won or lost
+    // Check if the player won (if the selected fruit matches the random fruit)
     const isWin = selectedFruit === fruitNames[randomIndex].toUpperCase();
 
-    // Play audio only if the music is on
+    // Play the win or lose sound if music is on
     if (isMusicOn) {
         (isWin ? winAudio : loseAudio).play().catch(error => {
             console.error("Audio playback failed:", error);
         });
     }
 
-    // Set the result text and button visibility
+    // Display the win or lose message
     const resultText = document.getElementById("resultText");
     resultText.innerHTML = isWin ? "You Won!" : "You Lose!";
     resultText.style.visibility = "visible";
 
-    // Handle button visibility
+    // Hide the enabled start button and show the disabled one
     document.getElementById("startButtonEnabled").style.visibility = "hidden";
     document.getElementById("startButtonDisabled").style.visibility = "visible";
 }
 
+/**
+ * Function to fade the opacity of an image element. The opacity value decreases or increases
+ * depending on the 'fading' parameter.
+ * @param {HTMLElement} element - The image element to apply the fade effect.
+ * @param {number} opacityValue - The current opacity value.
+ * @param {boolean} fading - Whether to fade out (true) or fade in (false).
+ */
 function fadeImage(element, opacityValue, fading) {
-    // Adjust the opacity value based on whether it's fading in or out
     if (fading) {
-        opacityValue -= 1;
+        opacityValue -= 1; // Decrease opacity if fading out
     } else {
-        opacityValue += 1;
+        opacityValue += 1; // Increase opacity if fading in
     }
 
-    // Clamp opacity values between 0 and 100
+    // Ensure opacity doesn't go out of bounds
     if (opacityValue <= 0) {
         opacityValue = 0;
-        return; // Stop further fading if it's fully transparent
+        return;
     }
-
     if (opacityValue >= 100) {
         opacityValue = 100;
-        return; // Stop further fading if it's fully opaque
+        return;
     }
 
+    // Apply the new opacity to the element
     element.style.opacity = opacityValue / 100;
 
-    // Continue fading after a short delay
+    // Continuously apply fade effect until it stops
     setTimeout(() => fadeImage(element, opacityValue, fading), 10);
 }
 
+/**
+ * Function to rotate and change fruit images every 300 milliseconds, creating a slot-machine effect.
+ */
 function rotateFruitImages() {
     const imageElement = document.getElementById("fruitDisplay");
+    // Pick a random fruit image and display it
     const randomIndex = Math.floor(Math.random() * fruitImagePaths.length);
     imageElement.src = fruitImagePaths[randomIndex];
-
-    // Don't fade the image completely out, just display it
-    fadeImage(imageElement, 100, false);  // Ensure it's fully visible
-
+    // Fade in the newly displayed fruit image
+    fadeImage(imageElement, 100, false);
+    // Repeat the rotation every 300 milliseconds
     imageRotationTimer = setTimeout(rotateFruitImages, 300);
 }
 
+/**
+ * Function to handle the player's selection of a fruit.
+ * Highlights the selected fruit and enables the start button.
+ * @param {string} fruitName - The name of the selected fruit.
+ */
 function selectFruit(fruitName) {
     selectedFruit = fruitName;
 
-    // Highlight the selected fruit by adding a class
+    // Remove the selected styling from any previously selected fruit
     const fruitImages = document.querySelectorAll(".fruitImage");
     fruitImages.forEach(image => {
-        image.classList.remove("selectedFruit"); // Remove highlight from all fruits
+        image.classList.remove("selectedFruit");
     });
 
-    // Find the clicked image and highlight it
+    // Find the clicked fruit image and apply the selected styling
     const clickedFruit = Array.from(fruitImages).find(img => img.alt === fruitName);
     clickedFruit.classList.add("selectedFruit");
 
+    // Hide the result text and enable the start button
     document.getElementById("resultText").style.visibility = "hidden";
     document.getElementById("startButtonEnabled").style.visibility = "visible";
     document.getElementById("startButtonDisabled").style.visibility = "hidden";
 }
 
+/**
+ * Function to toggle background music on or off. It switches between the play and mute buttons.
+ */
 function toggleBackgroundMusic() {
-
+    // Switch between play and mute button display
     if (isMusicOn) {
-        document.getElementById("playButton").style.display = "none"; // Hide play button
-        document.getElementById("muteButton").style.display = "block"; // Show mute button
+        document.getElementById("playButton").style.display = "none";
+        document.getElementById("muteButton").style.display = "block";
     } else {
-        document.getElementById("muteButton").style.display = "none"; // Hide mute button
-        document.getElementById("playButton").style.display = "block"; // Show play button
+        document.getElementById("muteButton").style.display = "none";
+        document.getElementById("playButton").style.display = "block";
     }
-    isMusicOn = !isMusicOn; // Toggle the music state
+    // Toggle the music state
+    isMusicOn = !isMusicOn;
 }
 
-// Initial setup
+// Load the fruit data when the page is loaded
 loadFruitData();
