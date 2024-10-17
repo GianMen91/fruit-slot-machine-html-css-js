@@ -1,6 +1,6 @@
 # Fruit Slot Machine Game
 
-Welcome to **Fruit Slot Machine**, a fun and interactive web-based game where players try their luck by spinning fruits! Developed with **HTML**, **CSS**, and **JavaScript**, this project showcases interactive UI development, event-driven programming skills.
+Welcome to **Fruit Slot Machine**, a fun and interactive web-based game where players try their luck by spinning fruits! Developed with only **HTML**, **CSS**, and **JavaScript**, this project showcases interactive UI development, event-driven programming skills.
 
 Feel free to explore, select your favorite fruit, and spin for a chance to win! 🍀
 
