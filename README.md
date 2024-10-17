@@ -38,6 +38,9 @@ Feel free to explore, select your favorite fruit, and spin for a chance to win! 
 ## Disclaimer
 All fruit images and symbols used in this game are sourced from [NetEnt](https://www.netent.com/en/)'s [Reel Rush](https://games.netent.com/video-slots/reel-rush/) slot game. These assets are their intellectual property, and I have used them solely for educational purposes as part of an assignment while working on a test project. The game developed here is not intended for commercial use.
 
+- Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=14800">Pixabay</a>
+- Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=80925">Pixabay</a>
+
 ## Future Enhancements
 
 Improve optimizations for mobile and tablet views.
